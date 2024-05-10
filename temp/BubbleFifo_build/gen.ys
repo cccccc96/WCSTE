@@ -1,0 +1,8 @@
+read_verilog -formal /root/chisel_with_ste/BubbleFifo_build/BubbleFifo.sv
+prep -top BubbleFifo
+flatten
+memory 
+hierarchy -check
+setundef -undriven -init -expose
+write_btor /root/chisel_with_ste/BubbleFifo_build/BubbleFifo2.btor2
+

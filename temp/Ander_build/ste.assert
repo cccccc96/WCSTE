@@ -1,0 +1,13 @@
+VARS
+x1,1
+x2,1
+ANT
+GUARD,( ( ! x1 ) & ( ! x2 ) ),io_a,F,0
+GUARD,( x1 & ( ! x2 ) ),io_b,F,0
+GUARD,( ( ! x1 ) & x2 ),io_c,F,0
+GUARD,( x1 & x2 ),io_a,T,0
+GUARD,( x1 & x2 ),io_b,T,0
+GUARD,( x1 & x2 ),io_c,T,0
+CONS
+GUARD,( ( ! x1 ) & ( ! x2 ) ),io_o,F,1
+GUARD,( x1 & x2 ),io_o,T,1

@@ -1,0 +1,22 @@
+load "ste.fl";
+let p = verilog2pexlif "" "Max2" ["Max2.sv"] [];
+let ckt = pexlif2fsm p;
+let in0 = bv_variable "in0[7:0]" ;
+let in1 = bv_variable "in1[7:0]" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "io_in0[7:0]" is in0 in_cycle 0  
+ and 
+ "io_in1[7:0]" is in1 in_cycle 0 ;
+let cons = 
+  in0 when (bv_gt in0 in1 ) 
+ and 
+ in1 when (bv_gt in1 in0 );
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

@@ -1,0 +1,30 @@
+$date
+Wednesday 2024/01/10  14:10:20
+$end
+$version PONO $end
+$timescale 1 ns $end
+$var wire 9 v1 _io_out_T_1[8:0] $end
+$var wire 32 v5 _mac_T[31:0] $end
+$var wire 32 v8 _mac_T_1[31:0] $end
+$var wire 1 v10 clock $end
+$var wire 16 v9 io_in_0[15:0] $end
+$var wire 16 v7 io_in_1[15:0] $end
+$var wire 16 v2 io_out[15:0] $end
+$var wire 16 v6 io_weights_0[15:0] $end
+$var wire 16 v4 io_weights_1[15:0] $end
+$var wire 32 v0 mac[31:0] $end
+$var wire 1 v3 reset $end
+$enddefinitions $end
+#0
+b00000000000000000000000000000000 v0
+b000000000 v1
+b0000000000000000 v2
+b0 v3
+b0000000000000000 v4
+b00000000000000000000000000000000 v5
+b0000000000000000 v6
+b1111111111111111 v7
+b00000000000000000000000000000000 v8
+b1111111111111111 v9
+b0 v10
+#1

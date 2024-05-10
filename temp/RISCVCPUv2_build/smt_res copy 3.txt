@@ -1,0 +1,3 @@
+ld
+runtime: 140.17 秒
+res: TRUE

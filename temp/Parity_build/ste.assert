@@ -1,0 +1,9 @@
+VARS
+dIn,1
+ANT
+reset,T,0
+reset,F,1
+io_in,dIn,1
+CONS
+GUARD,dIn,io_out,F,1
+GUARD,( ! dIn ),io_out,T,1

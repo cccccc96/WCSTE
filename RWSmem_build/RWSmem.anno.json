@@ -1,0 +1,19 @@
+[
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.SystemVerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"RWSmem_build"
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~RWSmem|RWSmem>io_dataOut",
+    "sources":[
+      "~RWSmem|RWSmem>io_enable",
+      "~RWSmem|RWSmem>io_write",
+      "~RWSmem|RWSmem>io_addr"
+    ]
+  }
+]

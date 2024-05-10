@@ -1,0 +1,66 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "self" ["self.sv"] [];
+let ckt = pexlif2fsm p;
+let x1 = variable "x1" ;
+let y2 = variable "y2" ;
+let x2 = variable "x2" ;
+let ins1 = bv_variable "ins1[31:0]" ;
+let ins2 = bv_variable "ins2[31:0]" ;
+let y1 = variable "y1" ;
+
+let ant = 
+  "clock" is_clock 10 
+  and
+  "reset" is T in_cycle 0  
+ and 
+ "io_rst" is T in_cycle 0  
+ and 
+ "io_insn_in_0[31:0]" is ins1 in_cycle 0  
+ and 
+ "io_insn_in_1[31:0]" is ins2 in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_rst" is F in_cycle 1  
+ and 
+ "reset" is F in_cycle 2  
+ and 
+ "io_rst" is F in_cycle 2  
+ and 
+ "reset" is F in_cycle 3  
+ and 
+ "io_rst" is F in_cycle 3  
+ and 
+ "reset" is F in_cycle 4  
+ and 
+ "io_rst" is F in_cycle 4  
+ and 
+ "reset" is F in_cycle 5  
+ and 
+ "io_rst" is F in_cycle 5  
+ and 
+ "reset" is F in_cycle 6  
+ and 
+ "io_rst" is F in_cycle 6  
+ and 
+ "reset" is F in_cycle 7  
+ and 
+ "io_rst" is F in_cycle 7  
+ and 
+ "reset" is F in_cycle 8  
+ and 
+ "io_rst" is F in_cycle 8  
+ and 
+ "reset" is F in_cycle 9  
+ and 
+ "io_rst" is F in_cycle 9 ;
+let cons = 
+  "io_o" is T in_cycle 9 ;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

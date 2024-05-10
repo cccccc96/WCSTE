@@ -1,0 +1,8 @@
+read_verilog -formal /root/chisel_with_ste/MyManyDynamicElementVecFir_build/MyManyDynamicElementVecFir.sv
+prep -top MyManyDynamicElementVecFir
+flatten
+memory 
+hierarchy -check
+setundef -undriven -init -expose
+write_btor /root/chisel_with_ste/MyManyDynamicElementVecFir_build/MyManyDynamicElementVecFir2.btor2
+

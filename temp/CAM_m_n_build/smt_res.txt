@@ -1,0 +1,2 @@
+runtime: 0.56 秒
+res: TRUE

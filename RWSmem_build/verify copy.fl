@@ -1,0 +1,41 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "RWSmem" ["RWSmem.sv"] [];
+let ckt = pexlif2fsm p;
+let memdata2 = bv_variable "memdata2[1:0]" ;
+let memdata0 = bv_variable "memdata0[1:0]" ;
+let memdata1 = bv_variable "memdata1[1:0]" ;
+let memdata3 = bv_variable "memdata3[1:0]" ;
+let addrv = bv_variable "addrv[1:0]" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "io_enable" is T in_cycle 0  
+ and 
+ "io_write" is F in_cycle 0  
+ and 
+ "io_addr[1:0]" is addrv in_cycle 0  
+ and 
+ "mem_0[1:0]" is memdata0 in_cycle 0  
+ and 
+ "mem_1[1:0]" is memdata1 in_cycle 0  
+ and 
+ "mem_2[1:0]" is memdata2 in_cycle 0  
+ and 
+ "mem_3[1:0]" is memdata3 in_cycle 0 ;
+let cons = 
+  "io_dataOut[1:0]" is memdata0 in_cycle 0  when ( (bv_geq addrv (int2bv 0 ) ) AND (bv_leq addrv (int2bv 0 )) ) 
+ and 
+ "io_dataOut[1:0]" is memdata1 in_cycle 0  when ( (bv_geq addrv (int2bv 1 ) ) AND (bv_leq addrv (int2bv 1 )) ) 
+ and 
+ "io_dataOut[1:0]" is memdata2 in_cycle 0  when ( (bv_geq addrv (int2bv 2 ) ) AND (bv_leq addrv (int2bv 2 )) ) 
+ and 
+ "io_dataOut[1:0]" is memdata3 in_cycle 0  when ( (bv_geq addrv (int2bv 3 ) ) AND (bv_leq addrv (int2bv 3 )) );
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

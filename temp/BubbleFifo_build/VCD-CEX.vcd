@@ -1,0 +1,271 @@
+$date
+Thursday 2023/12/28  10:51:58
+$end
+$version PONO $end
+$timescale 1 ns $end
+$var reg 16 v79 Buffer_1_io_deq_bits[15:0] $end
+$var reg 1 v64 Buffer_1_io_deq_valid $end
+$var reg 16 v78 Buffer_1_io_enq_bits[15:0] $end
+$var reg 1 v28 Buffer_1_io_enq_valid $end
+$var reg 16 v22 Buffer_2_io_deq_bits[15:0] $end
+$var reg 1 v18 Buffer_2_io_deq_valid $end
+$var reg 16 v49 Buffer_2_io_enq_bits[15:0] $end
+$var reg 1 v17 Buffer_2_io_enq_valid $end
+$var reg 16 v9 Buffer_3_io_deq_bits[15:0] $end
+$var reg 1 v7 Buffer_3_io_deq_valid $end
+$var reg 16 v19 Buffer_3_io_enq_bits[15:0] $end
+$var reg 1 v42 Buffer_3_io_enq_valid $end
+$var reg 16 v68 Buffer_io_deq_bits[15:0] $end
+$var reg 1 v2 Buffer_io_deq_valid $end
+$var reg 16 v80 io_deq_bits[15:0] $end
+$var reg 1 v38 io_deq_valid $end
+$var wire 1 v57 Buffer_1_clock $end
+$var wire 1 v77 Buffer_1_io_deq_ready $end
+$var wire 1 v67 Buffer_1_io_enq_ready $end
+$var wire 1 v76 Buffer_1_reset $end
+$var wire 1 v23 Buffer_2_clock $end
+$var wire 1 v21 Buffer_2_io_deq_ready $end
+$var wire 1 v66 Buffer_2_io_enq_ready $end
+$var wire 1 v16 Buffer_2_reset $end
+$var wire 1 v10 Buffer_3_clock $end
+$var wire 1 v8 Buffer_3_io_deq_ready $end
+$var wire 1 v5 Buffer_3_io_enq_ready $end
+$var wire 1 v4 Buffer_3_reset $end
+$var wire 1 v3 Buffer_clock $end
+$var wire 1 v6 Buffer_io_deq_ready $end
+$var wire 16 v1 Buffer_io_enq_bits[15:0] $end
+$var wire 1 v40 Buffer_io_enq_ready $end
+$var wire 1 v0 Buffer_io_enq_valid $end
+$var wire 1 v74 Buffer_reset $end
+$var wire 1 v34 clock $end
+$var wire 1 v37 io_deq_ready $end
+$var wire 16 v46 io_enq_bits[15:0] $end
+$var wire 1 v32 io_enq_ready $end
+$var wire 1 v52 io_enq_valid $end
+$var wire 1 v75 reset $end
+$scope module Buffer $end
+$var reg 16 v30 dataReg[15:0] $end
+$var reg 1 v44 fullReg $end
+$var reg 16 v48 io_deq_bits[15:0] $end
+$var reg 1 v25 io_deq_valid $end
+$var wire 1 v31 _GEN_1 $end
+$var wire 1 v29 clock $end
+$var wire 1 v36 io_deq_ready $end
+$var wire 16 v24 io_enq_bits[15:0] $end
+$var wire 1 v60 io_enq_ready $end
+$var wire 1 v54 io_enq_valid $end
+$var wire 1 v41 reset $end
+$upscope $end
+$scope module Buffer_1 $end
+$var reg 16 v55 dataReg[15:0] $end
+$var reg 1 v43 fullReg $end
+$var reg 16 v59 io_deq_bits[15:0] $end
+$var reg 1 v65 io_deq_valid $end
+$var reg 16 v70 io_enq_bits[15:0] $end
+$var reg 1 v72 io_enq_valid $end
+$var wire 1 v27 _GEN_1 $end
+$var wire 1 v35 clock $end
+$var wire 1 v61 io_deq_ready $end
+$var wire 1 v45 io_enq_ready $end
+$var wire 1 v73 reset $end
+$upscope $end
+$scope module Buffer_2 $end
+$var reg 16 v58 dataReg[15:0] $end
+$var reg 1 v63 fullReg $end
+$var reg 16 v69 io_deq_bits[15:0] $end
+$var reg 1 v50 io_deq_valid $end
+$var reg 16 v81 io_enq_bits[15:0] $end
+$var reg 1 v82 io_enq_valid $end
+$var wire 1 v26 _GEN_1 $end
+$var wire 1 v71 clock $end
+$var wire 1 v47 io_deq_ready $end
+$var wire 1 v62 io_enq_ready $end
+$var wire 1 v83 reset $end
+$upscope $end
+$scope module Buffer_3 $end
+$var reg 16 v53 dataReg[15:0] $end
+$var reg 1 v39 fullReg $end
+$var reg 16 v15 io_deq_bits[15:0] $end
+$var reg 1 v33 io_deq_valid $end
+$var reg 16 v13 io_enq_bits[15:0] $end
+$var reg 1 v56 io_enq_valid $end
+$var wire 1 v20 _GEN_1 $end
+$var wire 1 v51 clock $end
+$var wire 1 v14 io_deq_ready $end
+$var wire 1 v12 io_enq_ready $end
+$var wire 1 v11 reset $end
+$upscope $end
+$enddefinitions $end
+#0
+b0 v0
+b0000000000000000 v1
+b0 v2
+b0 v3
+b1 v4
+b1 v5
+b1 v6
+b0 v7
+b0 v8
+b0000000000000000 v9
+b0 v10
+b1 v11
+b1 v12
+b0000000000000000 v13
+b0 v14
+b0000000000000000 v15
+b1 v16
+b0 v17
+b0 v18
+b0000000000000000 v19
+b0 v20
+b1 v21
+b0000000000000000 v22
+b0 v23
+b0000000000000000 v24
+b0 v25
+b0 v26
+b0 v27
+b0 v28
+b0 v29
+b0000000000000000 v30
+b0 v31
+b1 v32
+b0 v33
+b0 v34
+b0 v35
+b1 v36
+b0 v37
+b0 v38
+b0 v39
+b1 v40
+b1 v41
+b0 v42
+b0 v43
+b0 v44
+b1 v45
+b0000000000000000 v46
+b1 v47
+b0000000000000000 v48
+b0000000000000000 v49
+b0 v50
+b0 v51
+b0 v52
+b0000000000000000 v53
+b0 v54
+b0000000000000000 v55
+b0 v56
+b0 v57
+b0000000000000000 v58
+b0000000000000000 v59
+b1 v60
+b1 v61
+b1 v62
+b0 v63
+b0 v64
+b0 v65
+b1 v66
+b1 v67
+b0000000000000000 v68
+b0000000000000000 v69
+b0000000000000000 v70
+b0 v71
+b0 v72
+b1 v73
+b1 v74
+b1 v75
+b1 v76
+b1 v77
+b0000000000000000 v78
+b0000000000000000 v79
+b0000000000000000 v80
+b0000000000000000 v81
+b0 v82
+b1 v83
+#1
+b1 v0
+b0 v4
+b0 v11
+b0 v16
+b1 v31
+b0 v41
+b1 v52
+b1 v54
+b0 v73
+b0 v74
+b0 v75
+b0 v76
+b0 v83
+#2
+b0 v0
+b1 v2
+b1 v25
+b1 v27
+b1 v28
+b0 v32
+b0 v40
+b1 v44
+b0 v52
+b0 v54
+b0 v60
+b1 v72
+#3
+b0 v2
+b0 v6
+b1 v17
+b0 v25
+b1 v26
+b0 v28
+b0 v31
+b1 v32
+b0 v36
+b1 v40
+b1 v43
+b0 v44
+b0 v45
+b1 v60
+b1 v64
+b1 v65
+b0 v67
+b0 v72
+b1 v82
+#4
+b1 v6
+b0 v17
+b1 v18
+b1 v20
+b0 v27
+b1 v36
+b1 v42
+b0 v43
+b1 v45
+b1 v50
+b1 v56
+b0 v61
+b0 v62
+b1 v63
+b0 v64
+b0 v65
+b0 v66
+b1 v67
+b0 v77
+b0 v82
+#5
+b0 v5
+b1 v7
+b0 v12
+b0 v18
+b0 v21
+b0 v26
+b1 v33
+b1 v38
+b1 v39
+b0 v42
+b0 v47
+b0 v50
+b0 v56
+b1 v61
+b1 v62
+b0 v63
+b1 v66
+b1 v77
+#6

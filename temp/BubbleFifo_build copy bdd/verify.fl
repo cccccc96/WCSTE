@@ -1,0 +1,57 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "BubbleFifo" ["BubbleFifo.sv"] [];
+let ckt = pexlif2fsm p;
+let d = bv_variable "d[15:0]" ;
+
+let ant = 
+  "clock" is_clock 6 
+  and
+  "reset" is T in_cycle 0  
+ and 
+ "io_enq_valid" is T in_cycle 0  
+ and 
+ "io_deq_ready" is F in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_enq_valid" is T in_cycle 1  
+ and 
+ "io_enq_bits[15:0]" is d in_cycle 1  
+ and 
+ "io_deq_ready" is F in_cycle 1  
+ and 
+ "reset" is F in_cycle 2  
+ and 
+ "io_enq_valid" is F in_cycle 2  
+ and 
+ "io_deq_ready" is F in_cycle 2  
+ and 
+ "reset" is F in_cycle 3  
+ and 
+ "io_enq_valid" is F in_cycle 3  
+ and 
+ "io_deq_ready" is F in_cycle 3  
+ and 
+ "reset" is F in_cycle 4  
+ and 
+ "io_enq_valid" is F in_cycle 4  
+ and 
+ "io_deq_ready" is F in_cycle 4  
+ and 
+ "reset" is F in_cycle 5  
+ and 
+ "io_enq_valid" is F in_cycle 5  
+ and 
+ "io_deq_ready" is F in_cycle 5 ;
+let cons = 
+  "io_deq_valid" is T in_cycle 5  
+ and 
+ "io_deq_bits[15:0]" is d in_cycle 5 ;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

@@ -1,0 +1,26 @@
+load "ste.fl";
+let p = verilog2pexlif "" "ByteSelector" ["ByteSelector.sv"] [];
+let ckt = pexlif2fsm p;
+let dIn = bv_variable "dIn[31:0]" ;
+let offset = bv_variable "offset[1:0]" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "io_in[31:0]" is dIn in_cycle 0  
+ and 
+ "io_offset[1:0]" is offset in_cycle 0 ;
+let cons = 
+  "io_out[7:0]" is (BV_EXTRACT dIn 7 0 ) in_cycle 0  when ( (bv_geq offset (int2bv 0 ) ) AND (bv_leq offset (int2bv 0 )) ) 
+ and 
+ "io_out[7:0]" is (BV_EXTRACT dIn 15 8 ) in_cycle 0  when ( (bv_geq offset (int2bv 1 ) ) AND (bv_leq offset (int2bv 1 )) ) 
+ and 
+ "io_out[7:0]" is (BV_EXTRACT dIn 23 16 ) in_cycle 0  when ( (bv_geq offset (int2bv 2 ) ) AND (bv_leq offset (int2bv 2 )) ) 
+ and 
+ "io_out[7:0]" is (BV_EXTRACT dIn 31 24 ) in_cycle 0  when ( (bv_geq offset (int2bv 3 ) ) AND (bv_leq offset (int2bv 3 )) );
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

@@ -1,0 +1,19 @@
+[
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.SystemVerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"MyManyDynamicElementVecFir_build"
+  },
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~MyManyDynamicElementVecFir|MyManyDynamicElementVecFir>io_out",
+    "sources":[
+      "~MyManyDynamicElementVecFir|MyManyDynamicElementVecFir>io_in",
+      "~MyManyDynamicElementVecFir|MyManyDynamicElementVecFir>io_consts_0",
+      "~MyManyDynamicElementVecFir|MyManyDynamicElementVecFir>io_consts_1"
+    ]
+  }
+]
