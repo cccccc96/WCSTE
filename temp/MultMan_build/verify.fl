@@ -1,0 +1,262 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "MultMan" ["MultMan.sv"] [];
+let ckt = pexlif2fsm p;
+let mult1_16 = bv_variable "mult1_16[9:0]" ;
+let mult2_13 = bv_variable "mult2_13[9:0]" ;
+let mult2_16 = bv_variable "mult2_16[9:0]" ;
+let mult2_12 = bv_variable "mult2_12[9:0]" ;
+let mult1_19 = bv_variable "mult1_19[9:0]" ;
+let mult1_7 = bv_variable "mult1_7[9:0]" ;
+let mult2_10 = bv_variable "mult2_10[9:0]" ;
+let mult2_2 = bv_variable "mult2_2[9:0]" ;
+let mult1_14 = bv_variable "mult1_14[9:0]" ;
+let mult2_14 = bv_variable "mult2_14[9:0]" ;
+let mult2_19 = bv_variable "mult2_19[9:0]" ;
+let mult1_11 = bv_variable "mult1_11[9:0]" ;
+let mult1_4 = bv_variable "mult1_4[9:0]" ;
+let mult2_4 = bv_variable "mult2_4[9:0]" ;
+let mult1_13 = bv_variable "mult1_13[9:0]" ;
+let mult1_12 = bv_variable "mult1_12[9:0]" ;
+let mult2_7 = bv_variable "mult2_7[9:0]" ;
+let mult2_3 = bv_variable "mult2_3[9:0]" ;
+let mult1_6 = bv_variable "mult1_6[9:0]" ;
+let mult2_5 = bv_variable "mult2_5[9:0]" ;
+let mult2_18 = bv_variable "mult2_18[9:0]" ;
+let mult1_3 = bv_variable "mult1_3[9:0]" ;
+let mult1_9 = bv_variable "mult1_9[9:0]" ;
+let mult1_18 = bv_variable "mult1_18[9:0]" ;
+let mult2_17 = bv_variable "mult2_17[9:0]" ;
+let mult1_17 = bv_variable "mult1_17[9:0]" ;
+let mult1_5 = bv_variable "mult1_5[9:0]" ;
+let mult1_8 = bv_variable "mult1_8[9:0]" ;
+let mult1_15 = bv_variable "mult1_15[9:0]" ;
+let mult2_9 = bv_variable "mult2_9[9:0]" ;
+let mult2_11 = bv_variable "mult2_11[9:0]" ;
+let mult1_10 = bv_variable "mult1_10[9:0]" ;
+let mult2_8 = bv_variable "mult2_8[9:0]" ;
+let mult2_15 = bv_variable "mult2_15[9:0]" ;
+let mult2_6 = bv_variable "mult2_6[9:0]" ;
+let mult1_2 = bv_variable "mult1_2[9:0]" ;
+let mult2_1 = bv_variable "mult2_1[9:0]" ;
+let mult1_1 = bv_variable "mult1_1[9:0]" ;
+
+let ant = 
+  "clock" is_clock 20 
+  and
+  "io_rstn" is F in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_rstn" is T in_cycle 1  
+ and 
+ "io_data_rdy" is T in_cycle 1  
+ and 
+ "io_mult1[9:0]" is mult1_1 in_cycle 1  
+ and 
+ "io_mult2[9:0]" is mult2_1 in_cycle 1  
+ and 
+ "reset" is F in_cycle 2  
+ and 
+ "io_rstn" is T in_cycle 2  
+ and 
+ "io_data_rdy" is T in_cycle 2  
+ and 
+ "io_mult1[9:0]" is mult1_2 in_cycle 2  
+ and 
+ "io_mult2[9:0]" is mult2_2 in_cycle 2  
+ and 
+ "reset" is F in_cycle 3  
+ and 
+ "io_rstn" is T in_cycle 3  
+ and 
+ "io_data_rdy" is T in_cycle 3  
+ and 
+ "io_mult1[9:0]" is mult1_3 in_cycle 3  
+ and 
+ "io_mult2[9:0]" is mult2_3 in_cycle 3  
+ and 
+ "reset" is F in_cycle 4  
+ and 
+ "io_rstn" is T in_cycle 4  
+ and 
+ "io_data_rdy" is T in_cycle 4  
+ and 
+ "io_mult1[9:0]" is mult1_4 in_cycle 4  
+ and 
+ "io_mult2[9:0]" is mult2_4 in_cycle 4  
+ and 
+ "reset" is F in_cycle 5  
+ and 
+ "io_rstn" is T in_cycle 5  
+ and 
+ "io_data_rdy" is T in_cycle 5  
+ and 
+ "io_mult1[9:0]" is mult1_5 in_cycle 5  
+ and 
+ "io_mult2[9:0]" is mult2_5 in_cycle 5  
+ and 
+ "reset" is F in_cycle 6  
+ and 
+ "io_rstn" is T in_cycle 6  
+ and 
+ "io_data_rdy" is T in_cycle 6  
+ and 
+ "io_mult1[9:0]" is mult1_6 in_cycle 6  
+ and 
+ "io_mult2[9:0]" is mult2_6 in_cycle 6  
+ and 
+ "reset" is F in_cycle 7  
+ and 
+ "io_rstn" is T in_cycle 7  
+ and 
+ "io_data_rdy" is T in_cycle 7  
+ and 
+ "io_mult1[9:0]" is mult1_7 in_cycle 7  
+ and 
+ "io_mult2[9:0]" is mult2_7 in_cycle 7  
+ and 
+ "reset" is F in_cycle 8  
+ and 
+ "io_rstn" is T in_cycle 8  
+ and 
+ "io_data_rdy" is T in_cycle 8  
+ and 
+ "io_mult1[9:0]" is mult1_8 in_cycle 8  
+ and 
+ "io_mult2[9:0]" is mult2_8 in_cycle 8  
+ and 
+ "reset" is F in_cycle 9  
+ and 
+ "io_rstn" is T in_cycle 9  
+ and 
+ "io_data_rdy" is T in_cycle 9  
+ and 
+ "io_mult1[9:0]" is mult1_9 in_cycle 9  
+ and 
+ "io_mult2[9:0]" is mult2_9 in_cycle 9  
+ and 
+ "reset" is F in_cycle 10  
+ and 
+ "io_rstn" is T in_cycle 10  
+ and 
+ "io_data_rdy" is T in_cycle 10  
+ and 
+ "io_mult1[9:0]" is mult1_10 in_cycle 10  
+ and 
+ "io_mult2[9:0]" is mult2_10 in_cycle 10  
+ and 
+ "reset" is F in_cycle 11  
+ and 
+ "io_rstn" is T in_cycle 11  
+ and 
+ "io_data_rdy" is T in_cycle 11  
+ and 
+ "io_mult1[9:0]" is mult1_11 in_cycle 11  
+ and 
+ "io_mult2[9:0]" is mult2_11 in_cycle 11  
+ and 
+ "reset" is F in_cycle 12  
+ and 
+ "io_rstn" is T in_cycle 12  
+ and 
+ "io_data_rdy" is T in_cycle 12  
+ and 
+ "io_mult1[9:0]" is mult1_12 in_cycle 12  
+ and 
+ "io_mult2[9:0]" is mult2_12 in_cycle 12  
+ and 
+ "reset" is F in_cycle 13  
+ and 
+ "io_rstn" is T in_cycle 13  
+ and 
+ "io_data_rdy" is T in_cycle 13  
+ and 
+ "io_mult1[9:0]" is mult1_13 in_cycle 13  
+ and 
+ "io_mult2[9:0]" is mult2_13 in_cycle 13  
+ and 
+ "reset" is F in_cycle 14  
+ and 
+ "io_rstn" is T in_cycle 14  
+ and 
+ "io_data_rdy" is T in_cycle 14  
+ and 
+ "io_mult1[9:0]" is mult1_14 in_cycle 14  
+ and 
+ "io_mult2[9:0]" is mult2_14 in_cycle 14  
+ and 
+ "reset" is F in_cycle 15  
+ and 
+ "io_rstn" is T in_cycle 15  
+ and 
+ "io_data_rdy" is T in_cycle 15  
+ and 
+ "io_mult1[9:0]" is mult1_15 in_cycle 15  
+ and 
+ "io_mult2[9:0]" is mult2_15 in_cycle 15  
+ and 
+ "reset" is F in_cycle 16  
+ and 
+ "io_rstn" is T in_cycle 16  
+ and 
+ "io_data_rdy" is T in_cycle 16  
+ and 
+ "io_mult1[9:0]" is mult1_16 in_cycle 16  
+ and 
+ "io_mult2[9:0]" is mult2_16 in_cycle 16  
+ and 
+ "reset" is F in_cycle 17  
+ and 
+ "io_rstn" is T in_cycle 17  
+ and 
+ "io_data_rdy" is T in_cycle 17  
+ and 
+ "io_mult1[9:0]" is mult1_17 in_cycle 17  
+ and 
+ "io_mult2[9:0]" is mult2_17 in_cycle 17  
+ and 
+ "reset" is F in_cycle 18  
+ and 
+ "io_rstn" is T in_cycle 18  
+ and 
+ "io_data_rdy" is T in_cycle 18  
+ and 
+ "io_mult1[9:0]" is mult1_18 in_cycle 18  
+ and 
+ "io_mult2[9:0]" is mult2_18 in_cycle 18  
+ and 
+ "reset" is F in_cycle 19  
+ and 
+ "io_rstn" is T in_cycle 19  
+ and 
+ "io_data_rdy" is T in_cycle 19  
+ and 
+ "io_mult1[9:0]" is mult1_19 in_cycle 19  
+ and 
+ "io_mult2[9:0]" is mult2_19 in_cycle 19 ;
+let cons = 
+  "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_1  mult2_1 ) 4 0 ) in_cycle 11  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_2  mult2_2 ) 4 0 ) in_cycle 12  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_3  mult2_3 ) 4 0 ) in_cycle 13  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_4  mult2_4 ) 4 0 ) in_cycle 14  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_5  mult2_5 ) 4 0 ) in_cycle 15  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_6  mult2_6 ) 4 0 ) in_cycle 16  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_7  mult2_7 ) 4 0 ) in_cycle 17  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_8  mult2_8 ) 4 0 ) in_cycle 18  
+ and 
+ "io_res[4:0]" is (BV_EXTRACT ( bv_mul mult1_9  mult2_9 ) 4 0 ) in_cycle 19 ;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

@@ -1,0 +1,8 @@
+sbt "testOnly cases.ander2SPec"
+sbt "testOnly cases.ramSpec"
+sbt "testOnly cases.fifoSpec"
+sbt "testOnly examples.AdderSPec"
+sbt "testOnly examples.Max2SPec"
+sbt "testOnly examples.RiscvSPec"
+sbt "testOnly examples.StackSPec"
+sbt "testOnly fifo.FifoSpec"

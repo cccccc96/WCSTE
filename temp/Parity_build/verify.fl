@@ -1,0 +1,23 @@
+load "ste.fl";
+let p = verilog2pexlif "" "Parity" ["Parity.sv"] [];
+let ckt = pexlif2fsm p;
+let dIn = variable "dIn" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "reset" is T in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_in" is dIn in_cycle 1 ;
+let cons = 
+  "io_out" is F in_cycle 1  when dIn 
+ and 
+ "io_out" is T in_cycle 1  when ( NOT dIn );
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

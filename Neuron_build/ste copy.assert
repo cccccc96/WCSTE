@@ -1,0 +1,12 @@
+VARS
+i1,16
+i2,16
+w1,16
+w2,16
+ANT
+io_in_0[15:0],i1,0
+io_in_1[15:0],i2,0
+io_weights_0[15:0],w1,0
+io_weights_1[15:0],w2,0
+CONS
+GUARD,( 0@32 > ( ( i1 * w1 ) + ( i2 * w2 ) ) ),io_out[15:0],0@16,0

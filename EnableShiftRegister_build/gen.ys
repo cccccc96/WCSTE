@@ -1,0 +1,8 @@
+read_verilog -formal /root/chisel_with_ste/EnableShiftRegister_build/EnableShiftRegister.sv
+prep -top EnableShiftRegister
+flatten
+memory 
+hierarchy -check
+setundef -undriven -init -expose
+write_btor /root/chisel_with_ste/EnableShiftRegister_build/EnableShiftRegister2.btor2
+

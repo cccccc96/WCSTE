@@ -1,0 +1,3 @@
+class `STE-SPEC-FIFO` {
+  
+}

@@ -1,0 +1,106 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "self" ["self.sv"] [];
+let ckt = pexlif2fsm p;
+let y2 = variable "y2" ;
+let ins6 = bv_variable "ins6[31:0]" ;
+let ins8 = bv_variable "ins8[31:0]" ;
+let ins2 = bv_variable "ins2[31:0]" ;
+let ins3 = bv_variable "ins3[31:0]" ;
+let y1 = variable "y1" ;
+let ins7 = bv_variable "ins7[31:0]" ;
+let x1 = variable "x1" ;
+let ins5 = bv_variable "ins5[31:0]" ;
+let x2 = variable "x2" ;
+let ins1 = bv_variable "ins1[31:0]" ;
+let ins4 = bv_variable "ins4[31:0]" ;
+
+let ant = 
+  "clock" is_clock 16 
+  and
+  "reset" is T in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_rst" is T in_cycle 1  
+ and 
+ "io_insn_in_0[31:0]" is ins1 in_cycle 1  
+ and 
+ "io_insn_in_1[31:0]" is ins2 in_cycle 1  
+ and 
+ "io_insn_in_2[31:0]" is ins3 in_cycle 1  
+ and 
+ "io_insn_in_3[31:0]" is ins4 in_cycle 1  
+ and 
+ "io_insn_in_4[31:0]" is ins5 in_cycle 1  
+ and 
+ "io_insn_in_5[31:0]" is ins6 in_cycle 1  
+ and 
+ "io_insn_in_6[31:0]" is ins7 in_cycle 1  
+ and 
+ "io_insn_in_7[31:0]" is ins8 in_cycle 1  
+ and 
+ "reset" is F in_cycle 2  
+ and 
+ "io_rst" is F in_cycle 2  
+ and 
+ "reset" is F in_cycle 3  
+ and 
+ "io_rst" is F in_cycle 3  
+ and 
+ "reset" is F in_cycle 4  
+ and 
+ "io_rst" is F in_cycle 4  
+ and 
+ "reset" is F in_cycle 5  
+ and 
+ "io_rst" is F in_cycle 5  
+ and 
+ "reset" is F in_cycle 6  
+ and 
+ "io_rst" is F in_cycle 6  
+ and 
+ "reset" is F in_cycle 7  
+ and 
+ "io_rst" is F in_cycle 7  
+ and 
+ "reset" is F in_cycle 8  
+ and 
+ "io_rst" is F in_cycle 8  
+ and 
+ "reset" is F in_cycle 9  
+ and 
+ "io_rst" is F in_cycle 9  
+ and 
+ "reset" is F in_cycle 10  
+ and 
+ "io_rst" is F in_cycle 10  
+ and 
+ "reset" is F in_cycle 11  
+ and 
+ "io_rst" is F in_cycle 11  
+ and 
+ "reset" is F in_cycle 12  
+ and 
+ "io_rst" is F in_cycle 12  
+ and 
+ "reset" is F in_cycle 13  
+ and 
+ "io_rst" is F in_cycle 13  
+ and 
+ "reset" is F in_cycle 14  
+ and 
+ "io_rst" is F in_cycle 14  
+ and 
+ "reset" is F in_cycle 15  
+ and 
+ "io_rst" is F in_cycle 15 ;
+let cons = 
+  "io_o" is T in_cycle 14 ;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

@@ -1,0 +1,37 @@
+load "ste.fl";
+let p = verilog2pexlif "" "Risc" ["Risc.sv"] [];
+let ckt = pexlif2fsm p;
+let insn = bv_variable "insn[31:0]" ;
+
+let ant = 
+  "clock" is_clock 3 
+  and
+  "reset" is T in_cycle 0  
+ and 
+ "io_isWr" is F in_cycle 0  
+ and 
+ "io_boot" is F in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_isWr" is T in_cycle 1  
+ and 
+ "io_boot" is F in_cycle 1  
+ and 
+ "io_wrData[31:0]" is insn in_cycle 1  
+ and 
+ "io_wrAddr[7:0]" is 0 in_cycle 1  
+ and 
+ "reset" is F in_cycle 2  
+ and 
+ "io_isWr" is F in_cycle 2  
+ and 
+ "io_boot" is F in_cycle 2 ;
+let cons = 
+  "io_out[31:0]" is (list2bv (tl (bv2list (bv_add (BV_EXTRACT insn 15 8 ) (BV_EXTRACT insn 7 0 ))))) in_cycle 2  when ( (bv_geq (BV_EXTRACT insn 31 24 ) (int2bv 1 ) ) AND (bv_leq (BV_EXTRACT insn 31 24 ) (int2bv 1 )) );
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

@@ -1,0 +1,39 @@
+load "ste.fl";
+let p = verilog2pexlif "" "CAM_m_n" ["CAM4to2c.sv"] [];
+let ckt = pexlif2fsm p;
+let CAMLINEDATA2 = bv_variable "CAMLINEDATA2[1:0]" ;
+let keyIn = bv_variable "keyIn[1:0]" ;
+let CAMLINEDATA1 = bv_variable "CAMLINEDATA1[1:0]" ;
+let CAMLINEDATA3 = bv_variable "CAMLINEDATA3[1:0]" ;
+let CAMLINEDATA4 = bv_variable "CAMLINEDATA4[1:0]" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "reset" is F in_cycle 0  
+ and 
+ "io_key[1:0]" is keyIn in_cycle 0  
+ and 
+ "i4/i14/oi" is (BV_EXTRACT CAMLINEDATA1 0 0 ) in_cycle 0  
+ and 
+ "i4/i15/oi" is (BV_EXTRACT CAMLINEDATA1 1 1 ) in_cycle 0  
+ and 
+ "i5/i14/oi" is (BV_EXTRACT CAMLINEDATA2 0 0 ) in_cycle 0  
+ and 
+ "i5/i15/oi" is (BV_EXTRACT CAMLINEDATA2 1 1 ) in_cycle 0  
+ and 
+ "i6/i14/oi" is (BV_EXTRACT CAMLINEDATA3 0 0 ) in_cycle 0  
+ and 
+ "i6/i15/oi" is (BV_EXTRACT CAMLINEDATA3 1 1 ) in_cycle 0  
+ and 
+ "i7/i14/oi" is (BV_EXTRACT CAMLINEDATA4 0 0 ) in_cycle 0  
+ and 
+ "i7/i15/oi" is (BV_EXTRACT CAMLINEDATA4 1 1 ) in_cycle 0 ;
+let cons = 
+  "io_hit" is ( ( ( ( (bv_geq CAMLINEDATA1 keyIn ) AND (bv_leq CAMLINEDATA1 keyIn) ) OR ( (bv_geq CAMLINEDATA2 keyIn ) AND (bv_leq CAMLINEDATA2 keyIn) ) ) OR ( (bv_geq CAMLINEDATA3 keyIn ) AND (bv_leq CAMLINEDATA3 keyIn) ) ) OR ( (bv_geq CAMLINEDATA4 keyIn ) AND (bv_leq CAMLINEDATA4 keyIn) ) ) in_cycle 0 ;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

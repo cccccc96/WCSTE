@@ -1,0 +1,9 @@
+VARS
+a,4
+b,4
+ANT
+io_A[3:0],a,0
+io_B[3:0],b,0
+io_Cin,T,0
+CONS
+io_Sum[3:0],( ( a + b ) + 1@4 ),0

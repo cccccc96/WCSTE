@@ -1,0 +1,21 @@
+load "ste.fl";
+let p = verilog2pexlif "" "DynamicMemorySearch" ["DynamicMemorySearch.sv"] [];
+let ckt = pexlif2fsm p;
+let wrAddr = bv_variable "wrAddr[1:0]" ;
+let d = bv_variable "d[7:0]" ;
+
+let ant = 
+  "clock" is_clock 7 
+  ;
+let cons = 
+  "io_done" is T in_cycle 6  
+ and 
+ "io_target[1:0]" is wrAddr in_cycle 6 ;
+ ant;
+ cons;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

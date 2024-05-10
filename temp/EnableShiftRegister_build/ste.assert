@@ -1,0 +1,17 @@
+VARS
+dIn,4
+ANT
+reset,T,0
+reset,F,1
+io_in[3:0],dIn,1
+io_shift,T,1
+reset,F,2
+io_shift,T,2
+reset,F,3
+io_shift,T,3
+reset,F,4
+io_shift,T,4
+reset,F,4
+io_shift,T,4
+CONS
+io_out[3:0],dIn,5

@@ -1,0 +1,51 @@
+$date
+Thursday 2023/11/16  14:16:24
+$end
+$version PONO $end
+$timescale 1 ns $end
+$var reg 4 v10 mem_0[3:0] $end
+$var reg 4 v12 mem_1[3:0] $end
+$var reg 4 v13 mem_2[3:0] $end
+$var reg 4 v14 mem_3[3:0] $end
+$var wire 4 v2 _GEN_12[3:0] $end
+$var wire 4 v1 _GEN_5[3:0] $end
+$var wire 4 v0 _GEN_6[3:0] $end
+$var wire 4 v11 _GEN_7[3:0] $end
+$var wire 1 v4 clock $end
+$var wire 2 v7 io_addr[1:0] $end
+$var wire 4 v5 io_dataIn[3:0] $end
+$var wire 4 v3 io_dataOut[3:0] $end
+$var wire 1 v8 io_enable $end
+$var wire 1 v6 io_write $end
+$var wire 1 v9 reset $end
+$enddefinitions $end
+#0
+b1111 v0
+b1111 v1
+b1110 v2
+b1110 v3
+b0 v4
+b0000 v5
+b0 v6
+b11 v7
+b1 v8
+b0 v9
+b1111 v10
+b1110 v11
+b1111 v12
+b1111 v13
+b1110 v14
+#1
+b0000 v2
+b0000 v3
+b1 v6
+b00 v7
+b1111 v11
+#2
+b0000 v1
+b1111 v2
+b1111 v3
+b0 v6
+b10 v7
+b0000 v10
+#3
