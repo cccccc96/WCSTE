@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/Neuron_build/Neuron.sv
-prep -top Neuron
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/Neuron_build/Neuron2.btor2
-

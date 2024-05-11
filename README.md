@@ -1,5 +1,4 @@
-# WCSTE （等论文提交赶紧把readme和transition接口加上）
-# 记得push hard修改时间
+# WCSTE 
 
 # STE Model Checker
 

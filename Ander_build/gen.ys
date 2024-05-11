@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/Ander_build/Ander.sv
-prep -top Ander
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/Ander_build/Ander2.btor2
-

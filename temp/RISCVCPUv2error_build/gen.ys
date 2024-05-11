@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/RISCVCPUv2error_build/RISCVCPUv2error.sv
-prep -top RISCVCPUv2error
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/RISCVCPUv2error_build/RISCVCPUv2error2.btor2
-

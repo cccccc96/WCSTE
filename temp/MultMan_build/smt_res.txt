@@ -1,2 +1,0 @@
-runtime: 1460.71 秒
-res: TRUE

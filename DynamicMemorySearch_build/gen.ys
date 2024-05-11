@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/DynamicMemorySearch_build/DynamicMemorySearch.sv
-prep -top DynamicMemorySearch
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/DynamicMemorySearch_build/DynamicMemorySearch2.btor2
-

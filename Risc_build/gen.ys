@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/Risc_build/Risc.sv
-prep -top Risc
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/Risc_build/Risc2.btor2
-

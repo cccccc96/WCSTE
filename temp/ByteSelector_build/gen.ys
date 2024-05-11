@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/ByteSelector_build/ByteSelector.sv
-prep -top ByteSelector
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/ByteSelector_build/ByteSelector.btor2
-

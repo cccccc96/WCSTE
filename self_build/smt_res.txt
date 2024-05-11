@@ -1,3 +1,0 @@
-runtime: 51.35 秒
-verifytime: 51.25 秒
-res: TRUE
