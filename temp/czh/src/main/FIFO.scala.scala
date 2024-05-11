@@ -1,4 +1,0 @@
-class `FIFO.scala` {
-  
-  
-}

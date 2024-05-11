@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/Adder_build/Adder.sv
-prep -top Adder
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/Adder_build/Adder.btor2
-

@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/srFIFO_build/srFIFO.sv
-prep -top srFIFO
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/srFIFO_build/srFIFO2.btor2
-

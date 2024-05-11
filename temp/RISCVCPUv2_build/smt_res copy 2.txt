@@ -1,3 +1,0 @@
-beq
-runtime: 1178.12 秒
-res: TRUE

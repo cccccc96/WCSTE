@@ -1,9 +1,0 @@
-VARS
-in0,8
-in1,8
-ANT
-io_in0[7:0],in0,0
-io_in1[7:0],in1,0
-CONS
-GUARD,( in0 > in1 ),io_out[7:0],in0,0
-GUARD,( in1 > in0 ),io_out[7:0],in1,0

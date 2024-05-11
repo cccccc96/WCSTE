@@ -1,9 +1,0 @@
-6
-runtime: 0.74 秒
-res: TRUE
-8
-runtime: 26.05 秒
-res: TRUE
-10
-runtime: 1460.71 秒
-res: TRUE

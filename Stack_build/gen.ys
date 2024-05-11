@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/Stack_build/Stack.sv
-prep -top Stack
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/Stack_build/Stack2.btor2
-

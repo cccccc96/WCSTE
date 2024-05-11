@@ -1,8 +1,0 @@
-read_verilog -formal /root/chisel_with_ste/SimpleFir_build/SimpleFir.sv
-prep -top SimpleFir
-flatten
-memory 
-hierarchy -check
-setundef -undriven -init -expose
-write_btor /root/chisel_with_ste/SimpleFir_build/SimpleFir2.btor2
-
