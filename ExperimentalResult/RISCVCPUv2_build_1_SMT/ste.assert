@@ -1,0 +1,45 @@
+VARS
+a2,5
+d1,64
+a1,5
+d2,64
+a3,5
+ANT
+reset,T,0
+io_rvfi_rst,T,0
+io_rvfi_rs1_addr_in[4:0],a1,0
+io_rvfi_rs2_addr_in[4:0],a2,0
+io_rvfi_rs1_rdata_in[63:0],d1,0
+io_rvfi_rs2_rdata_in[63:0],d2,0
+io_rvfi_insn_in_0[31:25],0,0
+io_rvfi_insn_in_0[14:12],0,0
+io_rvfi_insn_in_0[6:0],51,0
+io_rvfi_insn_in_0[24:20],a2,0
+io_rvfi_insn_in_0[19:15],a1,0
+io_rvfi_insn_in_0[11:7],a3,0
+io_rvfi_insn_in_1[31:25],0,0
+io_rvfi_insn_in_1[14:12],0,0
+io_rvfi_insn_in_1[6:0],51,0
+io_rvfi_insn_in_1[24:20],a2,0
+io_rvfi_insn_in_1[19:15],a1,0
+io_rvfi_insn_in_1[11:7],a3,0
+reset,F,1
+io_rvfi_rst,F,1
+reset,F,2
+io_rvfi_rst,F,2
+reset,F,3
+io_rvfi_rst,F,3
+reset,F,4
+io_rvfi_rst,F,4
+reset,F,5
+io_rvfi_rst,F,5
+reset,F,6
+io_rvfi_rst,F,6
+CONS
+GUARD,( ( ! ( a1 = a2 ) ) & ( ( ( ! ( a1 = 0@5 ) ) & ( d1 = 0@64 ) ) & ( ( ! ( a2 = 0@5 ) ) & ( d2 = 0@64 ) ) ) ),io_rvfi_rd_wdata[63:0],( d1 + d2 ),5
+GUARD,( ( a1 = a2 ) & ( ( ( ! ( a1 = 0@5 ) ) & ( d1 = 0@64 ) ) & ( ( ! ( a2 = 0@5 ) ) & ( d2 = 0@64 ) ) ) ),io_rvfi_rd_wdata[63:0],( d2 + d2 ),5
+GUARD,( ( ( ( ! ( a1 = a2 ) ) & ( ! ( a3 = a2 ) ) ) & ( ! ( a1 = a3 ) ) ) & ( ( ( ! ( a1 = 0@5 ) ) & ( d1 = 0@64 ) ) & ( ( ! ( a2 = 0@5 ) ) & ( d2 = 0@64 ) ) ) ),io_rvfi_mem_rdata[63:0],( d1 + d2 ),6
+GUARD,( ( ( ! ( a1 = a2 ) ) & ( a3 = a2 ) ) & ( ( ( ! ( a1 = 0@5 ) ) & ( d1 = 0@64 ) ) & ( ( ! ( a2 = 0@5 ) ) & ( d2 = 0@64 ) ) ) ),io_rvfi_mem_rdata[63:0],( ( d1 + d2 ) + d1 ),6
+GUARD,( ( ( ! ( a1 = a2 ) ) & ( a3 = a1 ) ) & ( ( ( ! ( a1 = 0@5 ) ) & ( d1 = 0@64 ) ) & ( ( ! ( a2 = 0@5 ) ) & ( d2 = 0@64 ) ) ) ),io_rvfi_mem_rdata[63:0],( ( d1 + d2 ) + d2 ),6
+GUARD,( ( a1 = a2 ) & ( ( ( ! ( a1 = 0@5 ) ) & ( d1 = 0@64 ) ) & ( ( ! ( a2 = 0@5 ) ) & ( d2 = 0@64 ) ) ) ),io_rvfi_mem_rdata[63:0],( d2 + d2 ),6
+GUARD,( ( ( a1 = a2 ) & ( a3 = a1 ) ) & ( ( ( ! ( a1 = 0@5 ) ) & ( d1 = 0@64 ) ) & ( ( ! ( a2 = 0@5 ) ) & ( d2 = 0@64 ) ) ) ),io_rvfi_mem_rdata[63:0],( ( d2 + d2 ) + d2 ),6

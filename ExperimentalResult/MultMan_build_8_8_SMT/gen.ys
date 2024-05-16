@@ -1,0 +1,8 @@
+read_verilog -formal /WCSTE/MultMan_build/MultMan.sv
+prep -top MultMan
+flatten
+memory 
+hierarchy -check
+setundef -undriven -init -expose
+write_btor /WCSTE/MultMan_build/MultMan2.btor2
+

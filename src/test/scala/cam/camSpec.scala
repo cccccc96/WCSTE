@@ -8,9 +8,10 @@ import scala.collection.mutable.ArrayBuffer
 import chisel3._
 
 class camSpec extends AnyFreeSpec with ChiselScalatestTester {
-
-  
-   ("cam Spec2 smt2") in {
+   ("cam Spec") in {
+    // 64;64
+    // 128;128
+    // 256;256
     var n = 64; //how much data can be stored
     var m = 64; //data width
     test(new CAM_m_n(m,n)) { dut =>
@@ -46,40 +47,5 @@ class camSpec extends AnyFreeSpec with ChiselScalatestTester {
     }
   }
 
-  //  ("cam Spec2 smt") in {
-  //   var n = 128; //data
-
-  //   var m = 128; //how much data can be stored
-
-  //   test(new CAM_m_n(m,n)) { dut =>
-  //     for(i <- 1 until 32){
-  //       dut.io.we.poke(true.B)
-  //       dut.io.din.poke(i.U)
-  //       dut.io.waddr.poke(0.U)
-  //       dut.clock.step()
-
-  //       dut.io.we.poke(false.B)
-  //       dut.io.key.poke(i.U)
-  //       dut.clock.step()
-  //       dut.io.hit.expect(true.B)
-  //       println(dut.io.hit.peek())
-
-  //     }
-  //   }
-  // }
-
-  // ("fifo ste assert pass use peekpoke") in {
-  //   val w = 8
-  //   val size = 16
-  //   test(new srFIFO(w, size)) { dut =>
-  //     dut.io.dataIn.poke(3.U)
-  //     dut.io.push.poke(true.B)
-  //     dut.clock.step()
-  //     dut.io.push.poke(false.B)
-  //     dut.io.pop.poke(true.B)
-  //     println(dut.io.dataOut.peek().toString())
-  //     dut.clock.step()
-  //   }
-  // }
 
 }

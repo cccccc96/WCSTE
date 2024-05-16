@@ -1,0 +1,8 @@
+read_verilog -formal /WCSTE/RWSmem_build/RWSmem.sv
+prep -top RWSmem
+flatten
+memory 
+hierarchy -check
+setundef -undriven -init -expose
+write_btor /WCSTE/RWSmem_build/RWSmem2.btor2
+

@@ -1,0 +1,213 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "CAM_m_n" ["CAM_m_n.sv"] [];
+let ckt = pexlif2fsm p;
+let CAMLINEDATA62 = bv_variable "CAMLINEDATA62[63:0]" ;
+let CAMLINEDATA53 = bv_variable "CAMLINEDATA53[63:0]" ;
+let CAMLINEDATA20 = bv_variable "CAMLINEDATA20[63:0]" ;
+let CAMLINEDATA35 = bv_variable "CAMLINEDATA35[63:0]" ;
+let CAMLINEDATA23 = bv_variable "CAMLINEDATA23[63:0]" ;
+let CAMLINEDATA15 = bv_variable "CAMLINEDATA15[63:0]" ;
+let CAMLINEDATA14 = bv_variable "CAMLINEDATA14[63:0]" ;
+let CAMLINEDATA3 = bv_variable "CAMLINEDATA3[63:0]" ;
+let CAMLINEDATA33 = bv_variable "CAMLINEDATA33[63:0]" ;
+let CAMLINEDATA63 = bv_variable "CAMLINEDATA63[63:0]" ;
+let CAMLINEDATA11 = bv_variable "CAMLINEDATA11[63:0]" ;
+let CAMLINEDATA25 = bv_variable "CAMLINEDATA25[63:0]" ;
+let CAMLINEDATA49 = bv_variable "CAMLINEDATA49[63:0]" ;
+let CAMLINEDATA43 = bv_variable "CAMLINEDATA43[63:0]" ;
+let CAMLINEDATA46 = bv_variable "CAMLINEDATA46[63:0]" ;
+let CAMLINEDATA37 = bv_variable "CAMLINEDATA37[63:0]" ;
+let CAMLINEDATA57 = bv_variable "CAMLINEDATA57[63:0]" ;
+let CAMLINEDATA21 = bv_variable "CAMLINEDATA21[63:0]" ;
+let CAMLINEDATA28 = bv_variable "CAMLINEDATA28[63:0]" ;
+let CAMLINEDATA22 = bv_variable "CAMLINEDATA22[63:0]" ;
+let CAMLINEDATA10 = bv_variable "CAMLINEDATA10[63:0]" ;
+let CAMLINEDATA6 = bv_variable "CAMLINEDATA6[63:0]" ;
+let CAMLINEDATA27 = bv_variable "CAMLINEDATA27[63:0]" ;
+let CAMLINEDATA55 = bv_variable "CAMLINEDATA55[63:0]" ;
+let CAMLINEDATA52 = bv_variable "CAMLINEDATA52[63:0]" ;
+let CAMLINEDATA58 = bv_variable "CAMLINEDATA58[63:0]" ;
+let CAMLINEDATA7 = bv_variable "CAMLINEDATA7[63:0]" ;
+let CAMLINEDATA41 = bv_variable "CAMLINEDATA41[63:0]" ;
+let CAMLINEDATA38 = bv_variable "CAMLINEDATA38[63:0]" ;
+let CAMLINEDATA4 = bv_variable "CAMLINEDATA4[63:0]" ;
+let CAMLINEDATA47 = bv_variable "CAMLINEDATA47[63:0]" ;
+let CAMLINEDATA8 = bv_variable "CAMLINEDATA8[63:0]" ;
+let CAMLINEDATA17 = bv_variable "CAMLINEDATA17[63:0]" ;
+let CAMLINEDATA54 = bv_variable "CAMLINEDATA54[63:0]" ;
+let CAMLINEDATA18 = bv_variable "CAMLINEDATA18[63:0]" ;
+let CAMLINEDATA0 = bv_variable "CAMLINEDATA0[63:0]" ;
+let CAMLINEDATA29 = bv_variable "CAMLINEDATA29[63:0]" ;
+let CAMLINEDATA5 = bv_variable "CAMLINEDATA5[63:0]" ;
+let CAMLINEDATA50 = bv_variable "CAMLINEDATA50[63:0]" ;
+let CAMLINEDATA31 = bv_variable "CAMLINEDATA31[63:0]" ;
+let CAMLINEDATA9 = bv_variable "CAMLINEDATA9[63:0]" ;
+let CAMLINEDATA59 = bv_variable "CAMLINEDATA59[63:0]" ;
+let keyIn = bv_variable "keyIn[63:0]" ;
+let CAMLINEDATA12 = bv_variable "CAMLINEDATA12[63:0]" ;
+let CAMLINEDATA61 = bv_variable "CAMLINEDATA61[63:0]" ;
+let CAMLINEDATA45 = bv_variable "CAMLINEDATA45[63:0]" ;
+let CAMLINEDATA42 = bv_variable "CAMLINEDATA42[63:0]" ;
+let CAMLINEDATA13 = bv_variable "CAMLINEDATA13[63:0]" ;
+let CAMLINEDATA60 = bv_variable "CAMLINEDATA60[63:0]" ;
+let CAMLINEDATA30 = bv_variable "CAMLINEDATA30[63:0]" ;
+let CAMLINEDATA32 = bv_variable "CAMLINEDATA32[63:0]" ;
+let CAMLINEDATA40 = bv_variable "CAMLINEDATA40[63:0]" ;
+let CAMLINEDATA51 = bv_variable "CAMLINEDATA51[63:0]" ;
+let CAMLINEDATA44 = bv_variable "CAMLINEDATA44[63:0]" ;
+let CAMLINEDATA24 = bv_variable "CAMLINEDATA24[63:0]" ;
+let CAMLINEDATA26 = bv_variable "CAMLINEDATA26[63:0]" ;
+let CAMLINEDATA56 = bv_variable "CAMLINEDATA56[63:0]" ;
+let CAMLINEDATA19 = bv_variable "CAMLINEDATA19[63:0]" ;
+let CAMLINEDATA39 = bv_variable "CAMLINEDATA39[63:0]" ;
+let CAMLINEDATA36 = bv_variable "CAMLINEDATA36[63:0]" ;
+let CAMLINEDATA2 = bv_variable "CAMLINEDATA2[63:0]" ;
+let CAMLINEDATA48 = bv_variable "CAMLINEDATA48[63:0]" ;
+let CAMLINEDATA16 = bv_variable "CAMLINEDATA16[63:0]" ;
+let CAMLINEDATA1 = bv_variable "CAMLINEDATA1[63:0]" ;
+let CAMLINEDATA34 = bv_variable "CAMLINEDATA34[63:0]" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "reset" is F in_cycle 0  
+ and 
+ "io_key[63:0]" is keyIn in_cycle 0  
+ and 
+ "CAMLine.camCells[63:0]" is CAMLINEDATA0 in_cycle 0  
+ and 
+ "CAMLine_1.camCells[63:0]" is CAMLINEDATA1 in_cycle 0  
+ and 
+ "CAMLine_2.camCells[63:0]" is CAMLINEDATA2 in_cycle 0  
+ and 
+ "CAMLine_3.camCells[63:0]" is CAMLINEDATA3 in_cycle 0  
+ and 
+ "CAMLine_4.camCells[63:0]" is CAMLINEDATA4 in_cycle 0  
+ and 
+ "CAMLine_5.camCells[63:0]" is CAMLINEDATA5 in_cycle 0  
+ and 
+ "CAMLine_6.camCells[63:0]" is CAMLINEDATA6 in_cycle 0  
+ and 
+ "CAMLine_7.camCells[63:0]" is CAMLINEDATA7 in_cycle 0  
+ and 
+ "CAMLine_8.camCells[63:0]" is CAMLINEDATA8 in_cycle 0  
+ and 
+ "CAMLine_9.camCells[63:0]" is CAMLINEDATA9 in_cycle 0  
+ and 
+ "CAMLine_10.camCells[63:0]" is CAMLINEDATA10 in_cycle 0  
+ and 
+ "CAMLine_11.camCells[63:0]" is CAMLINEDATA11 in_cycle 0  
+ and 
+ "CAMLine_12.camCells[63:0]" is CAMLINEDATA12 in_cycle 0  
+ and 
+ "CAMLine_13.camCells[63:0]" is CAMLINEDATA13 in_cycle 0  
+ and 
+ "CAMLine_14.camCells[63:0]" is CAMLINEDATA14 in_cycle 0  
+ and 
+ "CAMLine_15.camCells[63:0]" is CAMLINEDATA15 in_cycle 0  
+ and 
+ "CAMLine_16.camCells[63:0]" is CAMLINEDATA16 in_cycle 0  
+ and 
+ "CAMLine_17.camCells[63:0]" is CAMLINEDATA17 in_cycle 0  
+ and 
+ "CAMLine_18.camCells[63:0]" is CAMLINEDATA18 in_cycle 0  
+ and 
+ "CAMLine_19.camCells[63:0]" is CAMLINEDATA19 in_cycle 0  
+ and 
+ "CAMLine_20.camCells[63:0]" is CAMLINEDATA20 in_cycle 0  
+ and 
+ "CAMLine_21.camCells[63:0]" is CAMLINEDATA21 in_cycle 0  
+ and 
+ "CAMLine_22.camCells[63:0]" is CAMLINEDATA22 in_cycle 0  
+ and 
+ "CAMLine_23.camCells[63:0]" is CAMLINEDATA23 in_cycle 0  
+ and 
+ "CAMLine_24.camCells[63:0]" is CAMLINEDATA24 in_cycle 0  
+ and 
+ "CAMLine_25.camCells[63:0]" is CAMLINEDATA25 in_cycle 0  
+ and 
+ "CAMLine_26.camCells[63:0]" is CAMLINEDATA26 in_cycle 0  
+ and 
+ "CAMLine_27.camCells[63:0]" is CAMLINEDATA27 in_cycle 0  
+ and 
+ "CAMLine_28.camCells[63:0]" is CAMLINEDATA28 in_cycle 0  
+ and 
+ "CAMLine_29.camCells[63:0]" is CAMLINEDATA29 in_cycle 0  
+ and 
+ "CAMLine_30.camCells[63:0]" is CAMLINEDATA30 in_cycle 0  
+ and 
+ "CAMLine_31.camCells[63:0]" is CAMLINEDATA31 in_cycle 0  
+ and 
+ "CAMLine_32.camCells[63:0]" is CAMLINEDATA32 in_cycle 0  
+ and 
+ "CAMLine_33.camCells[63:0]" is CAMLINEDATA33 in_cycle 0  
+ and 
+ "CAMLine_34.camCells[63:0]" is CAMLINEDATA34 in_cycle 0  
+ and 
+ "CAMLine_35.camCells[63:0]" is CAMLINEDATA35 in_cycle 0  
+ and 
+ "CAMLine_36.camCells[63:0]" is CAMLINEDATA36 in_cycle 0  
+ and 
+ "CAMLine_37.camCells[63:0]" is CAMLINEDATA37 in_cycle 0  
+ and 
+ "CAMLine_38.camCells[63:0]" is CAMLINEDATA38 in_cycle 0  
+ and 
+ "CAMLine_39.camCells[63:0]" is CAMLINEDATA39 in_cycle 0  
+ and 
+ "CAMLine_40.camCells[63:0]" is CAMLINEDATA40 in_cycle 0  
+ and 
+ "CAMLine_41.camCells[63:0]" is CAMLINEDATA41 in_cycle 0  
+ and 
+ "CAMLine_42.camCells[63:0]" is CAMLINEDATA42 in_cycle 0  
+ and 
+ "CAMLine_43.camCells[63:0]" is CAMLINEDATA43 in_cycle 0  
+ and 
+ "CAMLine_44.camCells[63:0]" is CAMLINEDATA44 in_cycle 0  
+ and 
+ "CAMLine_45.camCells[63:0]" is CAMLINEDATA45 in_cycle 0  
+ and 
+ "CAMLine_46.camCells[63:0]" is CAMLINEDATA46 in_cycle 0  
+ and 
+ "CAMLine_47.camCells[63:0]" is CAMLINEDATA47 in_cycle 0  
+ and 
+ "CAMLine_48.camCells[63:0]" is CAMLINEDATA48 in_cycle 0  
+ and 
+ "CAMLine_49.camCells[63:0]" is CAMLINEDATA49 in_cycle 0  
+ and 
+ "CAMLine_50.camCells[63:0]" is CAMLINEDATA50 in_cycle 0  
+ and 
+ "CAMLine_51.camCells[63:0]" is CAMLINEDATA51 in_cycle 0  
+ and 
+ "CAMLine_52.camCells[63:0]" is CAMLINEDATA52 in_cycle 0  
+ and 
+ "CAMLine_53.camCells[63:0]" is CAMLINEDATA53 in_cycle 0  
+ and 
+ "CAMLine_54.camCells[63:0]" is CAMLINEDATA54 in_cycle 0  
+ and 
+ "CAMLine_55.camCells[63:0]" is CAMLINEDATA55 in_cycle 0  
+ and 
+ "CAMLine_56.camCells[63:0]" is CAMLINEDATA56 in_cycle 0  
+ and 
+ "CAMLine_57.camCells[63:0]" is CAMLINEDATA57 in_cycle 0  
+ and 
+ "CAMLine_58.camCells[63:0]" is CAMLINEDATA58 in_cycle 0  
+ and 
+ "CAMLine_59.camCells[63:0]" is CAMLINEDATA59 in_cycle 0  
+ and 
+ "CAMLine_60.camCells[63:0]" is CAMLINEDATA60 in_cycle 0  
+ and 
+ "CAMLine_61.camCells[63:0]" is CAMLINEDATA61 in_cycle 0  
+ and 
+ "CAMLine_62.camCells[63:0]" is CAMLINEDATA62 in_cycle 0  
+ and 
+ "CAMLine_63.camCells[63:0]" is CAMLINEDATA63 in_cycle 0 ;
+let cons = 
+  "io_hit" is ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( (bv_geq CAMLINEDATA0 keyIn ) AND (bv_leq CAMLINEDATA0 keyIn) ) OR ( (bv_geq CAMLINEDATA1 keyIn ) AND (bv_leq CAMLINEDATA1 keyIn) ) ) OR ( (bv_geq CAMLINEDATA2 keyIn ) AND (bv_leq CAMLINEDATA2 keyIn) ) ) OR ( (bv_geq CAMLINEDATA3 keyIn ) AND (bv_leq CAMLINEDATA3 keyIn) ) ) OR ( (bv_geq CAMLINEDATA4 keyIn ) AND (bv_leq CAMLINEDATA4 keyIn) ) ) OR ( (bv_geq CAMLINEDATA5 keyIn ) AND (bv_leq CAMLINEDATA5 keyIn) ) ) OR ( (bv_geq CAMLINEDATA6 keyIn ) AND (bv_leq CAMLINEDATA6 keyIn) ) ) OR ( (bv_geq CAMLINEDATA7 keyIn ) AND (bv_leq CAMLINEDATA7 keyIn) ) ) OR ( (bv_geq CAMLINEDATA8 keyIn ) AND (bv_leq CAMLINEDATA8 keyIn) ) ) OR ( (bv_geq CAMLINEDATA9 keyIn ) AND (bv_leq CAMLINEDATA9 keyIn) ) ) OR ( (bv_geq CAMLINEDATA10 keyIn ) AND (bv_leq CAMLINEDATA10 keyIn) ) ) OR ( (bv_geq CAMLINEDATA11 keyIn ) AND (bv_leq CAMLINEDATA11 keyIn) ) ) OR ( (bv_geq CAMLINEDATA12 keyIn ) AND (bv_leq CAMLINEDATA12 keyIn) ) ) OR ( (bv_geq CAMLINEDATA13 keyIn ) AND (bv_leq CAMLINEDATA13 keyIn) ) ) OR ( (bv_geq CAMLINEDATA14 keyIn ) AND (bv_leq CAMLINEDATA14 keyIn) ) ) OR ( (bv_geq CAMLINEDATA15 keyIn ) AND (bv_leq CAMLINEDATA15 keyIn) ) ) OR ( (bv_geq CAMLINEDATA16 keyIn ) AND (bv_leq CAMLINEDATA16 keyIn) ) ) OR ( (bv_geq CAMLINEDATA17 keyIn ) AND (bv_leq CAMLINEDATA17 keyIn) ) ) OR ( (bv_geq CAMLINEDATA18 keyIn ) AND (bv_leq CAMLINEDATA18 keyIn) ) ) OR ( (bv_geq CAMLINEDATA19 keyIn ) AND (bv_leq CAMLINEDATA19 keyIn) ) ) OR ( (bv_geq CAMLINEDATA20 keyIn ) AND (bv_leq CAMLINEDATA20 keyIn) ) ) OR ( (bv_geq CAMLINEDATA21 keyIn ) AND (bv_leq CAMLINEDATA21 keyIn) ) ) OR ( (bv_geq CAMLINEDATA22 keyIn ) AND (bv_leq CAMLINEDATA22 keyIn) ) ) OR ( (bv_geq CAMLINEDATA23 keyIn ) AND (bv_leq CAMLINEDATA23 keyIn) ) ) OR ( (bv_geq CAMLINEDATA24 keyIn ) AND (bv_leq CAMLINEDATA24 keyIn) ) ) OR ( (bv_geq CAMLINEDATA25 keyIn ) AND (bv_leq CAMLINEDATA25 keyIn) ) ) OR ( (bv_geq CAMLINEDATA26 keyIn ) AND (bv_leq CAMLINEDATA26 keyIn) ) ) OR ( (bv_geq CAMLINEDATA27 keyIn ) AND (bv_leq CAMLINEDATA27 keyIn) ) ) OR ( (bv_geq CAMLINEDATA28 keyIn ) AND (bv_leq CAMLINEDATA28 keyIn) ) ) OR ( (bv_geq CAMLINEDATA29 keyIn ) AND (bv_leq CAMLINEDATA29 keyIn) ) ) OR ( (bv_geq CAMLINEDATA30 keyIn ) AND (bv_leq CAMLINEDATA30 keyIn) ) ) OR ( (bv_geq CAMLINEDATA31 keyIn ) AND (bv_leq CAMLINEDATA31 keyIn) ) ) OR ( (bv_geq CAMLINEDATA32 keyIn ) AND (bv_leq CAMLINEDATA32 keyIn) ) ) OR ( (bv_geq CAMLINEDATA33 keyIn ) AND (bv_leq CAMLINEDATA33 keyIn) ) ) OR ( (bv_geq CAMLINEDATA34 keyIn ) AND (bv_leq CAMLINEDATA34 keyIn) ) ) OR ( (bv_geq CAMLINEDATA35 keyIn ) AND (bv_leq CAMLINEDATA35 keyIn) ) ) OR ( (bv_geq CAMLINEDATA36 keyIn ) AND (bv_leq CAMLINEDATA36 keyIn) ) ) OR ( (bv_geq CAMLINEDATA37 keyIn ) AND (bv_leq CAMLINEDATA37 keyIn) ) ) OR ( (bv_geq CAMLINEDATA38 keyIn ) AND (bv_leq CAMLINEDATA38 keyIn) ) ) OR ( (bv_geq CAMLINEDATA39 keyIn ) AND (bv_leq CAMLINEDATA39 keyIn) ) ) OR ( (bv_geq CAMLINEDATA40 keyIn ) AND (bv_leq CAMLINEDATA40 keyIn) ) ) OR ( (bv_geq CAMLINEDATA41 keyIn ) AND (bv_leq CAMLINEDATA41 keyIn) ) ) OR ( (bv_geq CAMLINEDATA42 keyIn ) AND (bv_leq CAMLINEDATA42 keyIn) ) ) OR ( (bv_geq CAMLINEDATA43 keyIn ) AND (bv_leq CAMLINEDATA43 keyIn) ) ) OR ( (bv_geq CAMLINEDATA44 keyIn ) AND (bv_leq CAMLINEDATA44 keyIn) ) ) OR ( (bv_geq CAMLINEDATA45 keyIn ) AND (bv_leq CAMLINEDATA45 keyIn) ) ) OR ( (bv_geq CAMLINEDATA46 keyIn ) AND (bv_leq CAMLINEDATA46 keyIn) ) ) OR ( (bv_geq CAMLINEDATA47 keyIn ) AND (bv_leq CAMLINEDATA47 keyIn) ) ) OR ( (bv_geq CAMLINEDATA48 keyIn ) AND (bv_leq CAMLINEDATA48 keyIn) ) ) OR ( (bv_geq CAMLINEDATA49 keyIn ) AND (bv_leq CAMLINEDATA49 keyIn) ) ) OR ( (bv_geq CAMLINEDATA50 keyIn ) AND (bv_leq CAMLINEDATA50 keyIn) ) ) OR ( (bv_geq CAMLINEDATA51 keyIn ) AND (bv_leq CAMLINEDATA51 keyIn) ) ) OR ( (bv_geq CAMLINEDATA52 keyIn ) AND (bv_leq CAMLINEDATA52 keyIn) ) ) OR ( (bv_geq CAMLINEDATA53 keyIn ) AND (bv_leq CAMLINEDATA53 keyIn) ) ) OR ( (bv_geq CAMLINEDATA54 keyIn ) AND (bv_leq CAMLINEDATA54 keyIn) ) ) OR ( (bv_geq CAMLINEDATA55 keyIn ) AND (bv_leq CAMLINEDATA55 keyIn) ) ) OR ( (bv_geq CAMLINEDATA56 keyIn ) AND (bv_leq CAMLINEDATA56 keyIn) ) ) OR ( (bv_geq CAMLINEDATA57 keyIn ) AND (bv_leq CAMLINEDATA57 keyIn) ) ) OR ( (bv_geq CAMLINEDATA58 keyIn ) AND (bv_leq CAMLINEDATA58 keyIn) ) ) OR ( (bv_geq CAMLINEDATA59 keyIn ) AND (bv_leq CAMLINEDATA59 keyIn) ) ) OR ( (bv_geq CAMLINEDATA60 keyIn ) AND (bv_leq CAMLINEDATA60 keyIn) ) ) OR ( (bv_geq CAMLINEDATA61 keyIn ) AND (bv_leq CAMLINEDATA61 keyIn) ) ) OR ( (bv_geq CAMLINEDATA62 keyIn ) AND (bv_leq CAMLINEDATA62 keyIn) ) ) OR ( (bv_geq CAMLINEDATA63 keyIn ) AND (bv_leq CAMLINEDATA63 keyIn) ) ) in_cycle 0 ;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

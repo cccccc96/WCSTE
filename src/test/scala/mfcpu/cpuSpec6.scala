@@ -173,7 +173,7 @@ class cpuSpec6 extends AnyFlatSpec with ChiselScalatestTester {
       val ant_ = antArray.reduce(_ && _)
       val cons_ = consArray.reduce(_ && _)
 
-      val assert = new Assert(ant_, cons_, () => new RISCVCPUv2(), BDD)
+      val assert = new Assert(ant_, cons_, () => new RISCVCPUv2(), SMT)
       assert.STE
 
 

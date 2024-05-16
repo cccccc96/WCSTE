@@ -1,6 +1,3 @@
-/**
-  * add 指令
-  */
 
 package mfcpu
 
@@ -11,23 +8,13 @@ import SymbolicTrajectoryEvaluation._
 import scala.collection.mutable.ArrayBuffer
 
 
-/** This is a trivial example of how to run this Specification From within sbt
-  * use:
-  * {{{
-  * testOnly gcd.GcdDecoupledTester
-  * }}}
-  * From a terminal shell use:
-  * {{{
-  * sbt 'testOnly gcd.GcdDecoupledTester'
-  * }}}
-  * //
-  */
+
 class cpuSpec3 extends AnyFlatSpec with ChiselScalatestTester {
 
   "mfcpu ste assert complicate" should "pass" in {
     test(new RISCVCPUv2()) { dut =>
       // variables
-      val m = 2 //指令数
+      val m = 2 
       val k = 5
       val max_cycle = k + 4
       val adr_width = dut.io.rvfi.rs1_addr_in.getWidth

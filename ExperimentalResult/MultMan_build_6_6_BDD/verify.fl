@@ -1,0 +1,158 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "MultMan" ["MultMan.sv"] [];
+let ckt = pexlif2fsm p;
+let mult2_1 = bv_variable "mult2_1[5:0]" ;
+let mult2_8 = bv_variable "mult2_8[5:0]" ;
+let mult2_4 = bv_variable "mult2_4[5:0]" ;
+let mult1_8 = bv_variable "mult1_8[5:0]" ;
+let mult1_10 = bv_variable "mult1_10[5:0]" ;
+let mult1_3 = bv_variable "mult1_3[5:0]" ;
+let mult2_9 = bv_variable "mult2_9[5:0]" ;
+let mult1_4 = bv_variable "mult1_4[5:0]" ;
+let mult1_5 = bv_variable "mult1_5[5:0]" ;
+let mult2_11 = bv_variable "mult2_11[5:0]" ;
+let mult1_6 = bv_variable "mult1_6[5:0]" ;
+let mult1_7 = bv_variable "mult1_7[5:0]" ;
+let mult2_5 = bv_variable "mult2_5[5:0]" ;
+let mult1_11 = bv_variable "mult1_11[5:0]" ;
+let mult1_1 = bv_variable "mult1_1[5:0]" ;
+let mult1_2 = bv_variable "mult1_2[5:0]" ;
+let mult2_7 = bv_variable "mult2_7[5:0]" ;
+let mult1_9 = bv_variable "mult1_9[5:0]" ;
+let mult2_3 = bv_variable "mult2_3[5:0]" ;
+let mult2_10 = bv_variable "mult2_10[5:0]" ;
+let mult2_2 = bv_variable "mult2_2[5:0]" ;
+let mult2_6 = bv_variable "mult2_6[5:0]" ;
+
+let ant = 
+  "clock" is_clock 12 
+  and
+  "io_rstn" is F in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_rstn" is T in_cycle 1  
+ and 
+ "io_data_rdy" is T in_cycle 1  
+ and 
+ "io_mult1[5:0]" is mult1_1 in_cycle 1  
+ and 
+ "io_mult2[5:0]" is mult2_1 in_cycle 1  
+ and 
+ "reset" is F in_cycle 2  
+ and 
+ "io_rstn" is T in_cycle 2  
+ and 
+ "io_data_rdy" is T in_cycle 2  
+ and 
+ "io_mult1[5:0]" is mult1_2 in_cycle 2  
+ and 
+ "io_mult2[5:0]" is mult2_2 in_cycle 2  
+ and 
+ "reset" is F in_cycle 3  
+ and 
+ "io_rstn" is T in_cycle 3  
+ and 
+ "io_data_rdy" is T in_cycle 3  
+ and 
+ "io_mult1[5:0]" is mult1_3 in_cycle 3  
+ and 
+ "io_mult2[5:0]" is mult2_3 in_cycle 3  
+ and 
+ "reset" is F in_cycle 4  
+ and 
+ "io_rstn" is T in_cycle 4  
+ and 
+ "io_data_rdy" is T in_cycle 4  
+ and 
+ "io_mult1[5:0]" is mult1_4 in_cycle 4  
+ and 
+ "io_mult2[5:0]" is mult2_4 in_cycle 4  
+ and 
+ "reset" is F in_cycle 5  
+ and 
+ "io_rstn" is T in_cycle 5  
+ and 
+ "io_data_rdy" is T in_cycle 5  
+ and 
+ "io_mult1[5:0]" is mult1_5 in_cycle 5  
+ and 
+ "io_mult2[5:0]" is mult2_5 in_cycle 5  
+ and 
+ "reset" is F in_cycle 6  
+ and 
+ "io_rstn" is T in_cycle 6  
+ and 
+ "io_data_rdy" is T in_cycle 6  
+ and 
+ "io_mult1[5:0]" is mult1_6 in_cycle 6  
+ and 
+ "io_mult2[5:0]" is mult2_6 in_cycle 6  
+ and 
+ "reset" is F in_cycle 7  
+ and 
+ "io_rstn" is T in_cycle 7  
+ and 
+ "io_data_rdy" is T in_cycle 7  
+ and 
+ "io_mult1[5:0]" is mult1_7 in_cycle 7  
+ and 
+ "io_mult2[5:0]" is mult2_7 in_cycle 7  
+ and 
+ "reset" is F in_cycle 8  
+ and 
+ "io_rstn" is T in_cycle 8  
+ and 
+ "io_data_rdy" is T in_cycle 8  
+ and 
+ "io_mult1[5:0]" is mult1_8 in_cycle 8  
+ and 
+ "io_mult2[5:0]" is mult2_8 in_cycle 8  
+ and 
+ "reset" is F in_cycle 9  
+ and 
+ "io_rstn" is T in_cycle 9  
+ and 
+ "io_data_rdy" is T in_cycle 9  
+ and 
+ "io_mult1[5:0]" is mult1_9 in_cycle 9  
+ and 
+ "io_mult2[5:0]" is mult2_9 in_cycle 9  
+ and 
+ "reset" is F in_cycle 10  
+ and 
+ "io_rstn" is T in_cycle 10  
+ and 
+ "io_data_rdy" is T in_cycle 10  
+ and 
+ "io_mult1[5:0]" is mult1_10 in_cycle 10  
+ and 
+ "io_mult2[5:0]" is mult2_10 in_cycle 10  
+ and 
+ "reset" is F in_cycle 11  
+ and 
+ "io_rstn" is T in_cycle 11  
+ and 
+ "io_data_rdy" is T in_cycle 11  
+ and 
+ "io_mult1[5:0]" is mult1_11 in_cycle 11  
+ and 
+ "io_mult2[5:0]" is mult2_11 in_cycle 11 ;
+let cons = 
+  "io_res[11:0]" is ( bv_mul mult1_1  mult2_1 ) in_cycle 7  
+ and 
+ "io_res[11:0]" is ( bv_mul mult1_2  mult2_2 ) in_cycle 8  
+ and 
+ "io_res[11:0]" is ( bv_mul mult1_3  mult2_3 ) in_cycle 9  
+ and 
+ "io_res[11:0]" is ( bv_mul mult1_4  mult2_4 ) in_cycle 10  
+ and 
+ "io_res[11:0]" is ( bv_mul mult1_5  mult2_5 ) in_cycle 11 ;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    

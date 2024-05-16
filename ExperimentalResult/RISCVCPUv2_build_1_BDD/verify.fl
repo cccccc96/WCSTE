@@ -1,0 +1,93 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "RISCVCPUv2" ["RISCVCPUv2.sv"] [];
+let ckt = pexlif2fsm p;
+let a2 = bv_variable "a2[4:0]" ;
+let d1 = bv_variable "d1[63:0]" ;
+let a1 = bv_variable "a1[4:0]" ;
+let d2 = bv_variable "d2[63:0]" ;
+let a3 = bv_variable "a3[4:0]" ;
+
+let ant = 
+  "clock" is_clock 7 
+  and
+  "reset" is T in_cycle 0  
+ and 
+ "io_rvfi_rst" is T in_cycle 0  
+ and 
+ "io_rvfi_rs1_addr_in[4:0]" is a1 in_cycle 0  
+ and 
+ "io_rvfi_rs2_addr_in[4:0]" is a2 in_cycle 0  
+ and 
+ "io_rvfi_rs1_rdata_in[63:0]" is d1 in_cycle 0  
+ and 
+ "io_rvfi_rs2_rdata_in[63:0]" is d2 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_0[31:25]" is 0 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_0[14:12]" is 0 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_0[6:0]" is 51 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_0[24:20]" is a2 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_0[19:15]" is a1 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_0[11:7]" is a3 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_1[31:25]" is 0 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_1[14:12]" is 0 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_1[6:0]" is 51 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_1[24:20]" is a2 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_1[19:15]" is a1 in_cycle 0  
+ and 
+ "io_rvfi_insn_in_1[11:7]" is a3 in_cycle 0  
+ and 
+ "reset" is F in_cycle 1  
+ and 
+ "io_rvfi_rst" is F in_cycle 1  
+ and 
+ "reset" is F in_cycle 2  
+ and 
+ "io_rvfi_rst" is F in_cycle 2  
+ and 
+ "reset" is F in_cycle 3  
+ and 
+ "io_rvfi_rst" is F in_cycle 3  
+ and 
+ "reset" is F in_cycle 4  
+ and 
+ "io_rvfi_rst" is F in_cycle 4  
+ and 
+ "reset" is F in_cycle 5  
+ and 
+ "io_rvfi_rst" is F in_cycle 5  
+ and 
+ "reset" is F in_cycle 6  
+ and 
+ "io_rvfi_rst" is F in_cycle 6 ;
+let cons = 
+  "io_rvfi_rd_wdata[63:0]" is (list2bv (tl (bv2list (bv_add d1 d2)))) in_cycle 5  when ( ( NOT ( (bv_geq a1 a2 ) AND (bv_leq a1 a2) ) ) AND ( ( ( NOT ( (bv_geq a1 (int2bv 0 ) ) AND (bv_leq a1 (int2bv 0 )) ) ) AND ( (bv_geq d1 (int2bv 0 ) ) AND (bv_leq d1 (int2bv 0 )) ) ) AND ( ( NOT ( (bv_geq a2 (int2bv 0 ) ) AND (bv_leq a2 (int2bv 0 )) ) ) AND ( (bv_geq d2 (int2bv 0 ) ) AND (bv_leq d2 (int2bv 0 )) ) ) ) ) 
+ and 
+ "io_rvfi_rd_wdata[63:0]" is (list2bv (tl (bv2list (bv_add d2 d2)))) in_cycle 5  when ( ( (bv_geq a1 a2 ) AND (bv_leq a1 a2) ) AND ( ( ( NOT ( (bv_geq a1 (int2bv 0 ) ) AND (bv_leq a1 (int2bv 0 )) ) ) AND ( (bv_geq d1 (int2bv 0 ) ) AND (bv_leq d1 (int2bv 0 )) ) ) AND ( ( NOT ( (bv_geq a2 (int2bv 0 ) ) AND (bv_leq a2 (int2bv 0 )) ) ) AND ( (bv_geq d2 (int2bv 0 ) ) AND (bv_leq d2 (int2bv 0 )) ) ) ) ) 
+ and 
+ "io_rvfi_mem_rdata[63:0]" is (list2bv (tl (bv2list (bv_add d1 d2)))) in_cycle 6  when ( ( ( ( NOT ( (bv_geq a1 a2 ) AND (bv_leq a1 a2) ) ) AND ( NOT ( (bv_geq a3 a2 ) AND (bv_leq a3 a2) ) ) ) AND ( NOT ( (bv_geq a1 a3 ) AND (bv_leq a1 a3) ) ) ) AND ( ( ( NOT ( (bv_geq a1 (int2bv 0 ) ) AND (bv_leq a1 (int2bv 0 )) ) ) AND ( (bv_geq d1 (int2bv 0 ) ) AND (bv_leq d1 (int2bv 0 )) ) ) AND ( ( NOT ( (bv_geq a2 (int2bv 0 ) ) AND (bv_leq a2 (int2bv 0 )) ) ) AND ( (bv_geq d2 (int2bv 0 ) ) AND (bv_leq d2 (int2bv 0 )) ) ) ) ) 
+ and 
+ "io_rvfi_mem_rdata[63:0]" is (list2bv (tl (bv2list (bv_add (list2bv (tl (bv2list (bv_add d1 d2)))) d1)))) in_cycle 6  when ( ( ( NOT ( (bv_geq a1 a2 ) AND (bv_leq a1 a2) ) ) AND ( (bv_geq a3 a2 ) AND (bv_leq a3 a2) ) ) AND ( ( ( NOT ( (bv_geq a1 (int2bv 0 ) ) AND (bv_leq a1 (int2bv 0 )) ) ) AND ( (bv_geq d1 (int2bv 0 ) ) AND (bv_leq d1 (int2bv 0 )) ) ) AND ( ( NOT ( (bv_geq a2 (int2bv 0 ) ) AND (bv_leq a2 (int2bv 0 )) ) ) AND ( (bv_geq d2 (int2bv 0 ) ) AND (bv_leq d2 (int2bv 0 )) ) ) ) ) 
+ and 
+ "io_rvfi_mem_rdata[63:0]" is (list2bv (tl (bv2list (bv_add (list2bv (tl (bv2list (bv_add d1 d2)))) d2)))) in_cycle 6  when ( ( ( NOT ( (bv_geq a1 a2 ) AND (bv_leq a1 a2) ) ) AND ( (bv_geq a3 a1 ) AND (bv_leq a3 a1) ) ) AND ( ( ( NOT ( (bv_geq a1 (int2bv 0 ) ) AND (bv_leq a1 (int2bv 0 )) ) ) AND ( (bv_geq d1 (int2bv 0 ) ) AND (bv_leq d1 (int2bv 0 )) ) ) AND ( ( NOT ( (bv_geq a2 (int2bv 0 ) ) AND (bv_leq a2 (int2bv 0 )) ) ) AND ( (bv_geq d2 (int2bv 0 ) ) AND (bv_leq d2 (int2bv 0 )) ) ) ) ) 
+ and 
+ "io_rvfi_mem_rdata[63:0]" is (list2bv (tl (bv2list (bv_add d2 d2)))) in_cycle 6  when ( ( (bv_geq a1 a2 ) AND (bv_leq a1 a2) ) AND ( ( ( NOT ( (bv_geq a1 (int2bv 0 ) ) AND (bv_leq a1 (int2bv 0 )) ) ) AND ( (bv_geq d1 (int2bv 0 ) ) AND (bv_leq d1 (int2bv 0 )) ) ) AND ( ( NOT ( (bv_geq a2 (int2bv 0 ) ) AND (bv_leq a2 (int2bv 0 )) ) ) AND ( (bv_geq d2 (int2bv 0 ) ) AND (bv_leq d2 (int2bv 0 )) ) ) ) ) 
+ and 
+ "io_rvfi_mem_rdata[63:0]" is (list2bv (tl (bv2list (bv_add (list2bv (tl (bv2list (bv_add d2 d2)))) d2)))) in_cycle 6  when ( ( ( (bv_geq a1 a2 ) AND (bv_leq a1 a2) ) AND ( (bv_geq a3 a1 ) AND (bv_leq a3 a1) ) ) AND ( ( ( NOT ( (bv_geq a1 (int2bv 0 ) ) AND (bv_leq a1 (int2bv 0 )) ) ) AND ( (bv_geq d1 (int2bv 0 ) ) AND (bv_leq d1 (int2bv 0 )) ) ) AND ( ( NOT ( (bv_geq a2 (int2bv 0 ) ) AND (bv_leq a2 (int2bv 0 )) ) ) AND ( (bv_geq d2 (int2bv 0 ) ) AND (bv_leq d2 (int2bv 0 )) ) ) ) );
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    
