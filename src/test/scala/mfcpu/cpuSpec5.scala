@@ -11,17 +11,7 @@ import SymbolicTrajectoryEvaluation._
 import scala.collection.mutable.ArrayBuffer
 
 
-/** This is a trivial example of how to run this Specification From within sbt
-  * use:
-  * {{{
-  * testOnly gcd.GcdDecoupledTester
-  * }}}
-  * From a terminal shell use:
-  * {{{
-  * sbt 'testOnly gcd.GcdDecoupledTester'
-  * }}}
-  * //
-  */
+// This is an spcification for a cpu with instruction bug
 class cpuSpec5 extends AnyFlatSpec with ChiselScalatestTester {
 
   "mfcpu ste assert complicate" should "pass" in {

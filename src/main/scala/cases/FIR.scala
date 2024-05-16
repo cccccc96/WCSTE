@@ -1,5 +1,0 @@
-package cases
-
-class FIR {
-  
-}

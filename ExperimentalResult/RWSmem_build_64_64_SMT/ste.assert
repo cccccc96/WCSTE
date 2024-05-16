@@ -1,0 +1,199 @@
+VARS
+memdata10,64
+memdata14,64
+memdata30,64
+memdata39,64
+memdata43,64
+memdata26,64
+memdata51,64
+memdata62,64
+memdata18,64
+memdata60,64
+memdata63,64
+memdata35,64
+memdata19,64
+memdata52,64
+memdata3,64
+memdata48,64
+memdata58,64
+memdata9,64
+memdata13,64
+memdata20,64
+memdata1,64
+memdata7,64
+memdata41,64
+memdata40,64
+memdata50,64
+memdata36,64
+memdata46,64
+memdata24,64
+memdata32,64
+memdata53,64
+memdata2,64
+memdata57,64
+memdata4,64
+memdata42,64
+memdata45,64
+memdata0,64
+memdata29,64
+memdata6,64
+memdata33,64
+memdata34,64
+memdata37,64
+memdata17,64
+memdata47,64
+memdata12,64
+memdata27,64
+memdata22,64
+memdata21,64
+memdata31,64
+memdata55,64
+memdata38,64
+memdata8,64
+memdata61,64
+memdata59,64
+memdata49,64
+memdata54,64
+addrv,6
+memdata25,64
+memdata56,64
+memdata16,64
+memdata23,64
+memdata44,64
+memdata15,64
+memdata28,64
+memdata5,64
+memdata11,64
+ANT
+io_enable,T,0
+io_write,F,0
+io_addr[5:0],addrv,0
+mem_0[63:0],memdata0,0
+mem_1[63:0],memdata1,0
+mem_2[63:0],memdata2,0
+mem_3[63:0],memdata3,0
+mem_4[63:0],memdata4,0
+mem_5[63:0],memdata5,0
+mem_6[63:0],memdata6,0
+mem_7[63:0],memdata7,0
+mem_8[63:0],memdata8,0
+mem_9[63:0],memdata9,0
+mem_10[63:0],memdata10,0
+mem_11[63:0],memdata11,0
+mem_12[63:0],memdata12,0
+mem_13[63:0],memdata13,0
+mem_14[63:0],memdata14,0
+mem_15[63:0],memdata15,0
+mem_16[63:0],memdata16,0
+mem_17[63:0],memdata17,0
+mem_18[63:0],memdata18,0
+mem_19[63:0],memdata19,0
+mem_20[63:0],memdata20,0
+mem_21[63:0],memdata21,0
+mem_22[63:0],memdata22,0
+mem_23[63:0],memdata23,0
+mem_24[63:0],memdata24,0
+mem_25[63:0],memdata25,0
+mem_26[63:0],memdata26,0
+mem_27[63:0],memdata27,0
+mem_28[63:0],memdata28,0
+mem_29[63:0],memdata29,0
+mem_30[63:0],memdata30,0
+mem_31[63:0],memdata31,0
+mem_32[63:0],memdata32,0
+mem_33[63:0],memdata33,0
+mem_34[63:0],memdata34,0
+mem_35[63:0],memdata35,0
+mem_36[63:0],memdata36,0
+mem_37[63:0],memdata37,0
+mem_38[63:0],memdata38,0
+mem_39[63:0],memdata39,0
+mem_40[63:0],memdata40,0
+mem_41[63:0],memdata41,0
+mem_42[63:0],memdata42,0
+mem_43[63:0],memdata43,0
+mem_44[63:0],memdata44,0
+mem_45[63:0],memdata45,0
+mem_46[63:0],memdata46,0
+mem_47[63:0],memdata47,0
+mem_48[63:0],memdata48,0
+mem_49[63:0],memdata49,0
+mem_50[63:0],memdata50,0
+mem_51[63:0],memdata51,0
+mem_52[63:0],memdata52,0
+mem_53[63:0],memdata53,0
+mem_54[63:0],memdata54,0
+mem_55[63:0],memdata55,0
+mem_56[63:0],memdata56,0
+mem_57[63:0],memdata57,0
+mem_58[63:0],memdata58,0
+mem_59[63:0],memdata59,0
+mem_60[63:0],memdata60,0
+mem_61[63:0],memdata61,0
+mem_62[63:0],memdata62,0
+mem_63[63:0],memdata63,0
+CONS
+GUARD,( addrv = 0@6 ),io_dataOut[63:0],memdata0,0
+GUARD,( addrv = 1@6 ),io_dataOut[63:0],memdata1,0
+GUARD,( addrv = 2@6 ),io_dataOut[63:0],memdata2,0
+GUARD,( addrv = 3@6 ),io_dataOut[63:0],memdata3,0
+GUARD,( addrv = 4@6 ),io_dataOut[63:0],memdata4,0
+GUARD,( addrv = 5@6 ),io_dataOut[63:0],memdata5,0
+GUARD,( addrv = 6@6 ),io_dataOut[63:0],memdata6,0
+GUARD,( addrv = 7@6 ),io_dataOut[63:0],memdata7,0
+GUARD,( addrv = 8@6 ),io_dataOut[63:0],memdata8,0
+GUARD,( addrv = 9@6 ),io_dataOut[63:0],memdata9,0
+GUARD,( addrv = 10@6 ),io_dataOut[63:0],memdata10,0
+GUARD,( addrv = 11@6 ),io_dataOut[63:0],memdata11,0
+GUARD,( addrv = 12@6 ),io_dataOut[63:0],memdata12,0
+GUARD,( addrv = 13@6 ),io_dataOut[63:0],memdata13,0
+GUARD,( addrv = 14@6 ),io_dataOut[63:0],memdata14,0
+GUARD,( addrv = 15@6 ),io_dataOut[63:0],memdata15,0
+GUARD,( addrv = 16@6 ),io_dataOut[63:0],memdata16,0
+GUARD,( addrv = 17@6 ),io_dataOut[63:0],memdata17,0
+GUARD,( addrv = 18@6 ),io_dataOut[63:0],memdata18,0
+GUARD,( addrv = 19@6 ),io_dataOut[63:0],memdata19,0
+GUARD,( addrv = 20@6 ),io_dataOut[63:0],memdata20,0
+GUARD,( addrv = 21@6 ),io_dataOut[63:0],memdata21,0
+GUARD,( addrv = 22@6 ),io_dataOut[63:0],memdata22,0
+GUARD,( addrv = 23@6 ),io_dataOut[63:0],memdata23,0
+GUARD,( addrv = 24@6 ),io_dataOut[63:0],memdata24,0
+GUARD,( addrv = 25@6 ),io_dataOut[63:0],memdata25,0
+GUARD,( addrv = 26@6 ),io_dataOut[63:0],memdata26,0
+GUARD,( addrv = 27@6 ),io_dataOut[63:0],memdata27,0
+GUARD,( addrv = 28@6 ),io_dataOut[63:0],memdata28,0
+GUARD,( addrv = 29@6 ),io_dataOut[63:0],memdata29,0
+GUARD,( addrv = 30@6 ),io_dataOut[63:0],memdata30,0
+GUARD,( addrv = 31@6 ),io_dataOut[63:0],memdata31,0
+GUARD,( addrv = 32@6 ),io_dataOut[63:0],memdata32,0
+GUARD,( addrv = 33@6 ),io_dataOut[63:0],memdata33,0
+GUARD,( addrv = 34@6 ),io_dataOut[63:0],memdata34,0
+GUARD,( addrv = 35@6 ),io_dataOut[63:0],memdata35,0
+GUARD,( addrv = 36@6 ),io_dataOut[63:0],memdata36,0
+GUARD,( addrv = 37@6 ),io_dataOut[63:0],memdata37,0
+GUARD,( addrv = 38@6 ),io_dataOut[63:0],memdata38,0
+GUARD,( addrv = 39@6 ),io_dataOut[63:0],memdata39,0
+GUARD,( addrv = 40@6 ),io_dataOut[63:0],memdata40,0
+GUARD,( addrv = 41@6 ),io_dataOut[63:0],memdata41,0
+GUARD,( addrv = 42@6 ),io_dataOut[63:0],memdata42,0
+GUARD,( addrv = 43@6 ),io_dataOut[63:0],memdata43,0
+GUARD,( addrv = 44@6 ),io_dataOut[63:0],memdata44,0
+GUARD,( addrv = 45@6 ),io_dataOut[63:0],memdata45,0
+GUARD,( addrv = 46@6 ),io_dataOut[63:0],memdata46,0
+GUARD,( addrv = 47@6 ),io_dataOut[63:0],memdata47,0
+GUARD,( addrv = 48@6 ),io_dataOut[63:0],memdata48,0
+GUARD,( addrv = 49@6 ),io_dataOut[63:0],memdata49,0
+GUARD,( addrv = 50@6 ),io_dataOut[63:0],memdata50,0
+GUARD,( addrv = 51@6 ),io_dataOut[63:0],memdata51,0
+GUARD,( addrv = 52@6 ),io_dataOut[63:0],memdata52,0
+GUARD,( addrv = 53@6 ),io_dataOut[63:0],memdata53,0
+GUARD,( addrv = 54@6 ),io_dataOut[63:0],memdata54,0
+GUARD,( addrv = 55@6 ),io_dataOut[63:0],memdata55,0
+GUARD,( addrv = 56@6 ),io_dataOut[63:0],memdata56,0
+GUARD,( addrv = 57@6 ),io_dataOut[63:0],memdata57,0
+GUARD,( addrv = 58@6 ),io_dataOut[63:0],memdata58,0
+GUARD,( addrv = 59@6 ),io_dataOut[63:0],memdata59,0
+GUARD,( addrv = 60@6 ),io_dataOut[63:0],memdata60,0
+GUARD,( addrv = 61@6 ),io_dataOut[63:0],memdata61,0
+GUARD,( addrv = 62@6 ),io_dataOut[63:0],memdata62,0
+GUARD,( addrv = 63@6 ),io_dataOut[63:0],memdata63,0

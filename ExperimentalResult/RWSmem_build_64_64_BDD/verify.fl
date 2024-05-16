@@ -1,0 +1,341 @@
+load "ste.fl";
+update_vossrc "RECURSION-CALL-LIMIT" "100000";
+update_vossrc "DYNAMIC-ORDERING" "NO";
+let p = verilog2pexlif "" "RWSmem" ["RWSmem.sv"] [];
+let ckt = pexlif2fsm p;
+let memdata10 = bv_variable "memdata10[63:0]" ;
+let memdata14 = bv_variable "memdata14[63:0]" ;
+let memdata30 = bv_variable "memdata30[63:0]" ;
+let memdata39 = bv_variable "memdata39[63:0]" ;
+let memdata43 = bv_variable "memdata43[63:0]" ;
+let memdata26 = bv_variable "memdata26[63:0]" ;
+let memdata51 = bv_variable "memdata51[63:0]" ;
+let memdata62 = bv_variable "memdata62[63:0]" ;
+let memdata18 = bv_variable "memdata18[63:0]" ;
+let memdata60 = bv_variable "memdata60[63:0]" ;
+let memdata63 = bv_variable "memdata63[63:0]" ;
+let memdata35 = bv_variable "memdata35[63:0]" ;
+let memdata19 = bv_variable "memdata19[63:0]" ;
+let memdata52 = bv_variable "memdata52[63:0]" ;
+let memdata3 = bv_variable "memdata3[63:0]" ;
+let memdata48 = bv_variable "memdata48[63:0]" ;
+let memdata58 = bv_variable "memdata58[63:0]" ;
+let memdata9 = bv_variable "memdata9[63:0]" ;
+let memdata13 = bv_variable "memdata13[63:0]" ;
+let memdata20 = bv_variable "memdata20[63:0]" ;
+let memdata1 = bv_variable "memdata1[63:0]" ;
+let memdata7 = bv_variable "memdata7[63:0]" ;
+let memdata41 = bv_variable "memdata41[63:0]" ;
+let memdata40 = bv_variable "memdata40[63:0]" ;
+let memdata50 = bv_variable "memdata50[63:0]" ;
+let memdata36 = bv_variable "memdata36[63:0]" ;
+let memdata46 = bv_variable "memdata46[63:0]" ;
+let memdata24 = bv_variable "memdata24[63:0]" ;
+let memdata32 = bv_variable "memdata32[63:0]" ;
+let memdata53 = bv_variable "memdata53[63:0]" ;
+let memdata2 = bv_variable "memdata2[63:0]" ;
+let memdata57 = bv_variable "memdata57[63:0]" ;
+let memdata4 = bv_variable "memdata4[63:0]" ;
+let memdata42 = bv_variable "memdata42[63:0]" ;
+let memdata45 = bv_variable "memdata45[63:0]" ;
+let memdata0 = bv_variable "memdata0[63:0]" ;
+let memdata29 = bv_variable "memdata29[63:0]" ;
+let memdata6 = bv_variable "memdata6[63:0]" ;
+let memdata33 = bv_variable "memdata33[63:0]" ;
+let memdata34 = bv_variable "memdata34[63:0]" ;
+let memdata37 = bv_variable "memdata37[63:0]" ;
+let memdata17 = bv_variable "memdata17[63:0]" ;
+let memdata47 = bv_variable "memdata47[63:0]" ;
+let memdata12 = bv_variable "memdata12[63:0]" ;
+let memdata27 = bv_variable "memdata27[63:0]" ;
+let memdata22 = bv_variable "memdata22[63:0]" ;
+let memdata21 = bv_variable "memdata21[63:0]" ;
+let memdata31 = bv_variable "memdata31[63:0]" ;
+let memdata55 = bv_variable "memdata55[63:0]" ;
+let memdata38 = bv_variable "memdata38[63:0]" ;
+let memdata8 = bv_variable "memdata8[63:0]" ;
+let memdata61 = bv_variable "memdata61[63:0]" ;
+let memdata59 = bv_variable "memdata59[63:0]" ;
+let memdata49 = bv_variable "memdata49[63:0]" ;
+let memdata54 = bv_variable "memdata54[63:0]" ;
+let addrv = bv_variable "addrv[5:0]" ;
+let memdata25 = bv_variable "memdata25[63:0]" ;
+let memdata56 = bv_variable "memdata56[63:0]" ;
+let memdata16 = bv_variable "memdata16[63:0]" ;
+let memdata23 = bv_variable "memdata23[63:0]" ;
+let memdata44 = bv_variable "memdata44[63:0]" ;
+let memdata15 = bv_variable "memdata15[63:0]" ;
+let memdata28 = bv_variable "memdata28[63:0]" ;
+let memdata5 = bv_variable "memdata5[63:0]" ;
+let memdata11 = bv_variable "memdata11[63:0]" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "io_enable" is T in_cycle 0  
+ and 
+ "io_write" is F in_cycle 0  
+ and 
+ "io_addr[5:0]" is addrv in_cycle 0  
+ and 
+ "mem_0[63:0]" is memdata0 in_cycle 0  
+ and 
+ "mem_1[63:0]" is memdata1 in_cycle 0  
+ and 
+ "mem_2[63:0]" is memdata2 in_cycle 0  
+ and 
+ "mem_3[63:0]" is memdata3 in_cycle 0  
+ and 
+ "mem_4[63:0]" is memdata4 in_cycle 0  
+ and 
+ "mem_5[63:0]" is memdata5 in_cycle 0  
+ and 
+ "mem_6[63:0]" is memdata6 in_cycle 0  
+ and 
+ "mem_7[63:0]" is memdata7 in_cycle 0  
+ and 
+ "mem_8[63:0]" is memdata8 in_cycle 0  
+ and 
+ "mem_9[63:0]" is memdata9 in_cycle 0  
+ and 
+ "mem_10[63:0]" is memdata10 in_cycle 0  
+ and 
+ "mem_11[63:0]" is memdata11 in_cycle 0  
+ and 
+ "mem_12[63:0]" is memdata12 in_cycle 0  
+ and 
+ "mem_13[63:0]" is memdata13 in_cycle 0  
+ and 
+ "mem_14[63:0]" is memdata14 in_cycle 0  
+ and 
+ "mem_15[63:0]" is memdata15 in_cycle 0  
+ and 
+ "mem_16[63:0]" is memdata16 in_cycle 0  
+ and 
+ "mem_17[63:0]" is memdata17 in_cycle 0  
+ and 
+ "mem_18[63:0]" is memdata18 in_cycle 0  
+ and 
+ "mem_19[63:0]" is memdata19 in_cycle 0  
+ and 
+ "mem_20[63:0]" is memdata20 in_cycle 0  
+ and 
+ "mem_21[63:0]" is memdata21 in_cycle 0  
+ and 
+ "mem_22[63:0]" is memdata22 in_cycle 0  
+ and 
+ "mem_23[63:0]" is memdata23 in_cycle 0  
+ and 
+ "mem_24[63:0]" is memdata24 in_cycle 0  
+ and 
+ "mem_25[63:0]" is memdata25 in_cycle 0  
+ and 
+ "mem_26[63:0]" is memdata26 in_cycle 0  
+ and 
+ "mem_27[63:0]" is memdata27 in_cycle 0  
+ and 
+ "mem_28[63:0]" is memdata28 in_cycle 0  
+ and 
+ "mem_29[63:0]" is memdata29 in_cycle 0  
+ and 
+ "mem_30[63:0]" is memdata30 in_cycle 0  
+ and 
+ "mem_31[63:0]" is memdata31 in_cycle 0  
+ and 
+ "mem_32[63:0]" is memdata32 in_cycle 0  
+ and 
+ "mem_33[63:0]" is memdata33 in_cycle 0  
+ and 
+ "mem_34[63:0]" is memdata34 in_cycle 0  
+ and 
+ "mem_35[63:0]" is memdata35 in_cycle 0  
+ and 
+ "mem_36[63:0]" is memdata36 in_cycle 0  
+ and 
+ "mem_37[63:0]" is memdata37 in_cycle 0  
+ and 
+ "mem_38[63:0]" is memdata38 in_cycle 0  
+ and 
+ "mem_39[63:0]" is memdata39 in_cycle 0  
+ and 
+ "mem_40[63:0]" is memdata40 in_cycle 0  
+ and 
+ "mem_41[63:0]" is memdata41 in_cycle 0  
+ and 
+ "mem_42[63:0]" is memdata42 in_cycle 0  
+ and 
+ "mem_43[63:0]" is memdata43 in_cycle 0  
+ and 
+ "mem_44[63:0]" is memdata44 in_cycle 0  
+ and 
+ "mem_45[63:0]" is memdata45 in_cycle 0  
+ and 
+ "mem_46[63:0]" is memdata46 in_cycle 0  
+ and 
+ "mem_47[63:0]" is memdata47 in_cycle 0  
+ and 
+ "mem_48[63:0]" is memdata48 in_cycle 0  
+ and 
+ "mem_49[63:0]" is memdata49 in_cycle 0  
+ and 
+ "mem_50[63:0]" is memdata50 in_cycle 0  
+ and 
+ "mem_51[63:0]" is memdata51 in_cycle 0  
+ and 
+ "mem_52[63:0]" is memdata52 in_cycle 0  
+ and 
+ "mem_53[63:0]" is memdata53 in_cycle 0  
+ and 
+ "mem_54[63:0]" is memdata54 in_cycle 0  
+ and 
+ "mem_55[63:0]" is memdata55 in_cycle 0  
+ and 
+ "mem_56[63:0]" is memdata56 in_cycle 0  
+ and 
+ "mem_57[63:0]" is memdata57 in_cycle 0  
+ and 
+ "mem_58[63:0]" is memdata58 in_cycle 0  
+ and 
+ "mem_59[63:0]" is memdata59 in_cycle 0  
+ and 
+ "mem_60[63:0]" is memdata60 in_cycle 0  
+ and 
+ "mem_61[63:0]" is memdata61 in_cycle 0  
+ and 
+ "mem_62[63:0]" is memdata62 in_cycle 0  
+ and 
+ "mem_63[63:0]" is memdata63 in_cycle 0 ;
+let cons = 
+  "io_dataOut[63:0]" is memdata0 in_cycle 0  when ( (bv_geq addrv (int2bv 0 ) ) AND (bv_leq addrv (int2bv 0 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata1 in_cycle 0  when ( (bv_geq addrv (int2bv 1 ) ) AND (bv_leq addrv (int2bv 1 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata2 in_cycle 0  when ( (bv_geq addrv (int2bv 2 ) ) AND (bv_leq addrv (int2bv 2 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata3 in_cycle 0  when ( (bv_geq addrv (int2bv 3 ) ) AND (bv_leq addrv (int2bv 3 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata4 in_cycle 0  when ( (bv_geq addrv (int2bv 4 ) ) AND (bv_leq addrv (int2bv 4 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata5 in_cycle 0  when ( (bv_geq addrv (int2bv 5 ) ) AND (bv_leq addrv (int2bv 5 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata6 in_cycle 0  when ( (bv_geq addrv (int2bv 6 ) ) AND (bv_leq addrv (int2bv 6 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata7 in_cycle 0  when ( (bv_geq addrv (int2bv 7 ) ) AND (bv_leq addrv (int2bv 7 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata8 in_cycle 0  when ( (bv_geq addrv (int2bv 8 ) ) AND (bv_leq addrv (int2bv 8 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata9 in_cycle 0  when ( (bv_geq addrv (int2bv 9 ) ) AND (bv_leq addrv (int2bv 9 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata10 in_cycle 0  when ( (bv_geq addrv (int2bv 10 ) ) AND (bv_leq addrv (int2bv 10 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata11 in_cycle 0  when ( (bv_geq addrv (int2bv 11 ) ) AND (bv_leq addrv (int2bv 11 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata12 in_cycle 0  when ( (bv_geq addrv (int2bv 12 ) ) AND (bv_leq addrv (int2bv 12 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata13 in_cycle 0  when ( (bv_geq addrv (int2bv 13 ) ) AND (bv_leq addrv (int2bv 13 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata14 in_cycle 0  when ( (bv_geq addrv (int2bv 14 ) ) AND (bv_leq addrv (int2bv 14 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata15 in_cycle 0  when ( (bv_geq addrv (int2bv 15 ) ) AND (bv_leq addrv (int2bv 15 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata16 in_cycle 0  when ( (bv_geq addrv (int2bv 16 ) ) AND (bv_leq addrv (int2bv 16 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata17 in_cycle 0  when ( (bv_geq addrv (int2bv 17 ) ) AND (bv_leq addrv (int2bv 17 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata18 in_cycle 0  when ( (bv_geq addrv (int2bv 18 ) ) AND (bv_leq addrv (int2bv 18 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata19 in_cycle 0  when ( (bv_geq addrv (int2bv 19 ) ) AND (bv_leq addrv (int2bv 19 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata20 in_cycle 0  when ( (bv_geq addrv (int2bv 20 ) ) AND (bv_leq addrv (int2bv 20 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata21 in_cycle 0  when ( (bv_geq addrv (int2bv 21 ) ) AND (bv_leq addrv (int2bv 21 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata22 in_cycle 0  when ( (bv_geq addrv (int2bv 22 ) ) AND (bv_leq addrv (int2bv 22 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata23 in_cycle 0  when ( (bv_geq addrv (int2bv 23 ) ) AND (bv_leq addrv (int2bv 23 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata24 in_cycle 0  when ( (bv_geq addrv (int2bv 24 ) ) AND (bv_leq addrv (int2bv 24 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata25 in_cycle 0  when ( (bv_geq addrv (int2bv 25 ) ) AND (bv_leq addrv (int2bv 25 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata26 in_cycle 0  when ( (bv_geq addrv (int2bv 26 ) ) AND (bv_leq addrv (int2bv 26 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata27 in_cycle 0  when ( (bv_geq addrv (int2bv 27 ) ) AND (bv_leq addrv (int2bv 27 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata28 in_cycle 0  when ( (bv_geq addrv (int2bv 28 ) ) AND (bv_leq addrv (int2bv 28 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata29 in_cycle 0  when ( (bv_geq addrv (int2bv 29 ) ) AND (bv_leq addrv (int2bv 29 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata30 in_cycle 0  when ( (bv_geq addrv (int2bv 30 ) ) AND (bv_leq addrv (int2bv 30 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata31 in_cycle 0  when ( (bv_geq addrv (int2bv 31 ) ) AND (bv_leq addrv (int2bv 31 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata32 in_cycle 0  when ( (bv_geq addrv (int2bv 32 ) ) AND (bv_leq addrv (int2bv 32 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata33 in_cycle 0  when ( (bv_geq addrv (int2bv 33 ) ) AND (bv_leq addrv (int2bv 33 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata34 in_cycle 0  when ( (bv_geq addrv (int2bv 34 ) ) AND (bv_leq addrv (int2bv 34 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata35 in_cycle 0  when ( (bv_geq addrv (int2bv 35 ) ) AND (bv_leq addrv (int2bv 35 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata36 in_cycle 0  when ( (bv_geq addrv (int2bv 36 ) ) AND (bv_leq addrv (int2bv 36 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata37 in_cycle 0  when ( (bv_geq addrv (int2bv 37 ) ) AND (bv_leq addrv (int2bv 37 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata38 in_cycle 0  when ( (bv_geq addrv (int2bv 38 ) ) AND (bv_leq addrv (int2bv 38 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata39 in_cycle 0  when ( (bv_geq addrv (int2bv 39 ) ) AND (bv_leq addrv (int2bv 39 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata40 in_cycle 0  when ( (bv_geq addrv (int2bv 40 ) ) AND (bv_leq addrv (int2bv 40 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata41 in_cycle 0  when ( (bv_geq addrv (int2bv 41 ) ) AND (bv_leq addrv (int2bv 41 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata42 in_cycle 0  when ( (bv_geq addrv (int2bv 42 ) ) AND (bv_leq addrv (int2bv 42 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata43 in_cycle 0  when ( (bv_geq addrv (int2bv 43 ) ) AND (bv_leq addrv (int2bv 43 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata44 in_cycle 0  when ( (bv_geq addrv (int2bv 44 ) ) AND (bv_leq addrv (int2bv 44 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata45 in_cycle 0  when ( (bv_geq addrv (int2bv 45 ) ) AND (bv_leq addrv (int2bv 45 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata46 in_cycle 0  when ( (bv_geq addrv (int2bv 46 ) ) AND (bv_leq addrv (int2bv 46 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata47 in_cycle 0  when ( (bv_geq addrv (int2bv 47 ) ) AND (bv_leq addrv (int2bv 47 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata48 in_cycle 0  when ( (bv_geq addrv (int2bv 48 ) ) AND (bv_leq addrv (int2bv 48 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata49 in_cycle 0  when ( (bv_geq addrv (int2bv 49 ) ) AND (bv_leq addrv (int2bv 49 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata50 in_cycle 0  when ( (bv_geq addrv (int2bv 50 ) ) AND (bv_leq addrv (int2bv 50 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata51 in_cycle 0  when ( (bv_geq addrv (int2bv 51 ) ) AND (bv_leq addrv (int2bv 51 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata52 in_cycle 0  when ( (bv_geq addrv (int2bv 52 ) ) AND (bv_leq addrv (int2bv 52 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata53 in_cycle 0  when ( (bv_geq addrv (int2bv 53 ) ) AND (bv_leq addrv (int2bv 53 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata54 in_cycle 0  when ( (bv_geq addrv (int2bv 54 ) ) AND (bv_leq addrv (int2bv 54 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata55 in_cycle 0  when ( (bv_geq addrv (int2bv 55 ) ) AND (bv_leq addrv (int2bv 55 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata56 in_cycle 0  when ( (bv_geq addrv (int2bv 56 ) ) AND (bv_leq addrv (int2bv 56 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata57 in_cycle 0  when ( (bv_geq addrv (int2bv 57 ) ) AND (bv_leq addrv (int2bv 57 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata58 in_cycle 0  when ( (bv_geq addrv (int2bv 58 ) ) AND (bv_leq addrv (int2bv 58 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata59 in_cycle 0  when ( (bv_geq addrv (int2bv 59 ) ) AND (bv_leq addrv (int2bv 59 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata60 in_cycle 0  when ( (bv_geq addrv (int2bv 60 ) ) AND (bv_leq addrv (int2bv 60 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata61 in_cycle 0  when ( (bv_geq addrv (int2bv 61 ) ) AND (bv_leq addrv (int2bv 61 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata62 in_cycle 0  when ( (bv_geq addrv (int2bv 62 ) ) AND (bv_leq addrv (int2bv 62 )) ) 
+ and 
+ "io_dataOut[63:0]" is memdata63 in_cycle 0  when ( (bv_geq addrv (int2bv 63 ) ) AND (bv_leq addrv (int2bv 63 )) );
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+printf "ste_r:";
+get_ste_result ste "checkOK";
+exit 0;
+    
