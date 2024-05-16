@@ -1,0 +1,19 @@
+load "ste.fl";
+let p = verilog2pexlif F ("-I"^DIR^"") "mem" ["mem.v"] [];
+let ckt = pexlif2fsm p;
+let ant = 
+    "clock" is_clock 2 and 
+    "csen_n" is 0 for 2 cycles and 
+    "wren_n" is 1 for 1 cycle followed_by //write at one cycle
+                0 for 1 cycle            //read at second cycle
+    and 
+    "io_addr[4:0]" is 2 for 2 cycles    //write/read for addr-2 
+    and 
+    "io_dataIn[31:0]" is 4 for 2 cycles //write_data is 4   
+;
+let vis = STE_debug ckt;
+let ste = STE "-e" vis [] ant [] [];
+ste;
+
+
+

@@ -1,0 +1,32 @@
+load "ste.fl";
+
+let p = verilog2pexlif "" "Memory" [
+                    "mem.sv"] [];
+let ckt = pexlif2fsm p;
+
+let w = variable "io_wrData";
+    
+let ant = [
+(T,"reset",T,0,2),
+(T,"reset",F,2,6),
+(T,"io_wrEna",T,0,4),
+(T,"io_wrEna",F,4,6),
+(T,"io_wrAddr[0]",T,0,6),
+(T,"io_wrAddr[1]",T,0,6),
+(T,"io_wrData[0]",T,0,6),
+(T,"io_wrData[1]",T,0,6),
+(T,"io_rdAddr[0]",T,2,6),
+(T,"io_rdAddr[1]",T,2,6)
+] @ ( "clock" is_clock 4) ;
+
+let cons = [
+(T,"io_rdData[0]",T,3,4),
+(T,"io_rdData[1]",T,3,4)
+];
+
+//let vis = STE_debug ckt;
+let ste = STE "-e" ckt [] ant cons [];
+ste;
+
+
+

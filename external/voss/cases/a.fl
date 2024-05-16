@@ -1,0 +1,35 @@
+load "ste.fl";
+let p = verilog2pexlif "" "Ander" ["ander.sv"] [];
+let ckt = pexlif2fsm p;
+let x1 = variable "x1" ;
+let x2 = variable "x2" ;
+
+let ant = 
+  "clock" is_clock 2 
+  and
+  "io_a" is F in_cycle 0  when ( ( NOT  x1 )  AND  ( NOT  x2 ) )
+ and 
+"io_b" is F in_cycle 0  when ( x1  AND  ( NOT  x2 ) )
+ and 
+"io_c" is F in_cycle 0  when ( ( NOT  x1 )  AND  (  x2 ) )
+ and 
+"io_a" is T in_cycle 0  when ( x1  AND  x2 )
+ and 
+"io_b" is T in_cycle 0  when ( x1  AND  x2 )
+ and 
+"io_c" is T in_cycle 0  when ( x1  AND  x2 )
+;
+let cons = 
+  "io_o" is F in_cycle 1  when ( ( NOT  x1 )  OR  ( NOT  x2 ) )
+ and 
+"io_o" is T in_cycle 1  when ( x1  AND (NOT x2) )
+
+  ;
+let ste = STE "-e" ckt [] ant cons [];
+ant;
+ste;
+cons;
+printf "czh:";
+get_ste_result ste "checkOK";
+exit 1;
+    

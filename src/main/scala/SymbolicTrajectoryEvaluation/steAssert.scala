@@ -21,7 +21,7 @@ class Assert[T <: RawModule](
 
   //PATH & circuit module name
   var rootPath = System.getProperty("user.dir")
-  var ponoPath = "/root/SteBmcSmt/pono/build"
+  var ponoPath = "./external/pono/build"
   var mod = Util.modName(dutGen)
   var buildPath = s"${rootPath}/${mod}_build"
 

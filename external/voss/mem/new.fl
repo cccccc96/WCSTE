@@ -1,0 +1,27 @@
+load "ste.fl";
+
+let p = verilog2pexlif F ("-I"^DIR^"") "M65C02_RAM" [
+                    "M65C02_RAM.v"] ["M65C02_RAM.txt"];
+let ckt = pexlif2fsm p;
+let vis = STE_debug ckt;
+
+
+let ant = 
+    "Clk" is_clock 5
+    and 
+    "ZP" is 1 for 4 cycles
+    and 
+    "Ext" is 0 for 4 cycles
+    and 
+    "WE" is 1 for 2 cycles followed_by
+                0 for 3 cycles 
+    and 
+    "AI[1:0]" is 2 for 1 cycles followed_by
+                0 for 3  cycles
+    and 
+    "DI[1:0]" is 1 for 4 cycles   
+;
+
+let ste = STE "-e" vis [] ant [] [];
+ste;
+

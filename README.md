@@ -32,26 +32,44 @@ The verification backend module is dedicated to STE verification, employing two 
 
 ## Install
 
-1 Requirement
+#### Install Chisel 
 
-This tool provides two verification engines. Engine 1 relies on the smt-switch implementation in pono, which provides related toolkits for Btor2 analysis and solver. Engine 2 depends on Voss2. Therefore, users need to install pono and voss as dependencies.
+This is an STE model checker for Chisel, please make sure you have the correct Chisel environment.
 
-```scala
-cd build
-git clone https://github.com/stanford-centaur/pono.git
-git clone https://github.com/TeamVoss/VossII.git
+If you don't have, follow the instruction in https://github.com/chipsalliance/chisel-template.
 
-## install the Chisel environment
-follow the guide of Chisel book
+* JDK 8 or newer
+
+We recommend LTS releases Java 8 and Java 11. You can install the JDK as your operating system recommends, or use the prebuilt binaries from [AdoptOpenJDK](https://adoptopenjdk.net/).
+
+* SBT or mill
+
+SBT is the most common build tool in the Scala community. You can download it [here](https://www.scala-sbt.org/download.html).
+mill is another Scala/Java build tool without obscure DSL like SBT. You can download it [here](https://github.com/com-lihaoyi/mill/releases)
+
+#### Install pono 
+
+follow the instruction in https://github.com/stanford-centaur/pono
+
 ```
-
-2 Install
-
-```scala
+cd {WCSTE_dir}/external/pono
+./contrib/setup-bison.sh
+./contrib/setup-flex.sh
+./contrib/setup-smt-switch.sh
+./contrib/setup-btor2tools.sh
+./configure.sh
 cd build && make
 ```
 
-3 Run an example and Test whether the installation is successful
+#### Install VossII
+
+follow the instruction in https://github.com/TeamVoss/VossII
+
+```scala
+export PATH={WCSTE_dir}/external/voss/bin$PATH
+```
+
+#### Run an example and Test whether the installation is successful
 
 ```scala
 sbt "testOnly test.testSpec"
@@ -60,6 +78,19 @@ sbt "testOnly test.testSpec"
 ## Install (option)
 
 If you don’t want to go through the trivial installation and configuration work，we provide a complete linux environment (Docker). 
+
+```
+// load the docker image
+docker load -i wcste-u.tar
+
+// go into the docker and you can directly use WCSTE
+cd /WCSTE
+
+// e.g. run an ram example
+sbt "testOnly ram.ramSpec"
+```
+
+
 
 ## How to Verify a Chisel Circuit 
 
@@ -79,7 +110,23 @@ For specific syntax, please refer to src/scala/ste.
 
 ### A Motivated Case
 
-This is an example explained in *Handbook of Model Checking*. A simple Chisel circuit Ander: the output out is the a&b&c before one cycle. 
+This is an example explained in [Handbook of Model Checking](https://link.springer.com/book/10.1007/978-3-319-10575-8). The circuit is a three-input, unit-delay, AND-gate.
+
+![image-20240516195935207](./assets/image-20240516195935207.png)
+
+ A direct STE verification can be the trajectory assertion of a direct simulation:
+
+![image-20240516200204153](./assets/image-20240516200204153.png)
+
+However, We can be more clever than this by using STE abstraction lattice to reduce the number of Boolean variables needed to verify this gate. The key observation is that if any one input is 0, then the output will be 0 regardless of the other inputs. There are four cases to check—three in which one of the inputs is known to be 0 and the others are unknown, and one in which all three inputs are known to be 1. We can enumerate or ‘index’ these with two Boolean variables, say *x*1 and *x*2. We write the following
+
+property:
+
+![image-20240516200347356](./assets/image-20240516200347356.png)
+
+**Then, we can use WCSTE to try this example.**
+
+A simple Chisel circuit Ander: the output out is the a&b&c before one cycle. 
 
 ```scala
 class Ander extends Module {

@@ -343,3 +343,5 @@ hs_err_pid*
 .github/
 .test_run_dir/
 
+.external/pono/deps
+.external/pono/build

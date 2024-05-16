@@ -1,0 +1,20 @@
+//-------------------------------------------------------------------
+// Copyright 2020 Carl-Johan Seger
+// SPDX-License-Identifier: Apache-2.0
+//-------------------------------------------------------------------
+
+cload (DIR^"../IDVII/src/fl/design/load.fl");
+cload (DIR^"../IDVII/src/fl/gui/sch_draw/load.fl");
+
+
+let list_prefix n av = (n > (length av)) =>
+        error "Vector shorter than requested prefix" |
+        letrec list_prefix n av = (n = 0) => [] |
+                (hd av) : (list_prefix (n-1) (tl av)) in
+        list_prefix n av;
+
+let list_suffix n av = (n > (length av)) =>
+        error "Vector shorter than requested suffix" |
+        (rev (list_prefix n (rev av)));
+
+let BV_EXTRACT bv i j = list2bv (list_prefix (i-j+1) (list_suffix (i+1) (bv2list bv)) ) ;
