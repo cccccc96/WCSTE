@@ -212,7 +212,7 @@ We conducted experiments using the two verification backends. As our evaluation 
 
 ## More Details and Examples of How to Use WCSTE-Spec
 
-In addition to the above four examples, we have given many examples to introduce how WCSTE-Spec is used. All examples can be found in src/test/examples.
+In addition to the above four examples, we have given many examples to introduce how WCSTE-Spec is used. All examples can be found in **src/test/examples**.
 
 For example, there is an case of FIFO that describes how to define specifications for a large number of bundles in a circuit.
 
