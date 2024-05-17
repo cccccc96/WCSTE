@@ -1,0 +1,70 @@
+# Brazilian Portuguese Translation (pt_BR).
+# Copyright © 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the bison-runtime package.
+# Leslie Harlley Watter <leslie@watter.org>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.3a\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2020-07-23 06:59+0200\n"
+"PO-Revision-Date: 2007-05-03 22:39-0300\n"
+"Last-Translator: Leslie Harlley Watter <leslie@watter.org>\n"
+"Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
+
+#: data/skeletons/glr.c:895 data/skeletons/yacc.c:690
+msgid "syntax error: cannot back up"
+msgstr "erro de sintaxe: não é possível voltar"
+
+#: data/skeletons/glr.c:1810
+msgid "syntax is ambiguous"
+msgstr "a sintaxe é ambígua"
+
+#: data/skeletons/glr.c:2222 data/skeletons/glr.c:2248
+#: data/skeletons/glr.c:2301 data/skeletons/glr.c:2541
+#: data/skeletons/lalr1.cc:1046 data/skeletons/lalr1.cc:1543
+#: data/skeletons/yacc.c:1364 data/skeletons/yacc.c:1899
+#: data/skeletons/yacc.c:1903
+msgid "syntax error"
+msgstr "erro de sintaxe"
+
+#: data/skeletons/glr.c:2249 data/skeletons/lalr1.cc:1544
+#: data/skeletons/yacc.c:1365
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "erro de sintaxe, %s não esperado"
+
+#: data/skeletons/glr.c:2250 data/skeletons/lalr1.cc:1545
+#: data/skeletons/yacc.c:1366
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "erro de sintaxe, %s não esperado, esperando %s"
+
+#: data/skeletons/glr.c:2251 data/skeletons/lalr1.cc:1546
+#: data/skeletons/yacc.c:1367
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "erro de sintaxe, %s não esperado, esperando %s ou %s"
+
+#: data/skeletons/glr.c:2252 data/skeletons/lalr1.cc:1547
+#: data/skeletons/yacc.c:1368
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "erro de sintaxe, %s não esperado, esperando %s ou %s ou %s"
+
+#: data/skeletons/glr.c:2253 data/skeletons/lalr1.cc:1548
+#: data/skeletons/yacc.c:1369
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr "erro de sintaxe, %s não esperado, esperando %s ou %s ou %s ou %s"
+
+#: data/skeletons/glr.c:2600 data/skeletons/yacc.c:1437
+#: data/skeletons/yacc.c:1439 data/skeletons/yacc.c:1642
+#: data/skeletons/yacc.c:2051
+msgid "memory exhausted"
+msgstr "falta de memória"
