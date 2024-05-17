@@ -77,13 +77,17 @@ sbt "testOnly test.testSpec"
 
 ## Install (option)
 
-If you don’t want to go through the trivial installation and configuration work，we provide a complete linux environment (Docker). 
+If you don’t want to go through the trivial installation and configuration work，we provide a complete Linux environment (Docker). 
+
+[Download Docker Image Here](https://pan.baidu.com/s/1xrKVgpUjFBvkkHDq2_6VYA) 
+Download Passward：6d9p 
 
 ```
 // load the docker image
 docker load -i wcste-u.tar
 
-// go into the docker and you can directly use WCSTE
+// you just need to start the wcste-u Image and go into the docker container
+// and you can directly use WCSTE
 cd /WCSTE
 
 // e.g. run an ram example
@@ -212,7 +216,7 @@ We conducted experiments using the two verification backends. As our evaluation 
 
 ## More Details and Examples of How to Use WCSTE-Spec
 
-In addition to the above four examples, we have given many examples to introduce how WCSTE-Spec is used. All examples can be found in **src/test/examples**.
+In addition to the above four examples, we have given many examples to introduce how WCSTE-Spec is used. All examples can be found in src/test/examples.
 
 For example, there is an case of FIFO that describes how to define specifications for a large number of bundles in a circuit.
 

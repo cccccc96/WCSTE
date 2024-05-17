@@ -1,0 +1,72 @@
+# Japanese message for GNU bison 2.4 (runtime)
+# Copyright (C) 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the bison package.
+# Daisuke Yamashita <yamad@mb.infoweb.ne.jp>, 2001.
+# Yasuaki Taniguchi <yasuakit@gmail.com>, 2010
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.4\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2020-07-23 06:59+0200\n"
+"PO-Revision-Date: 2010-01-10 14:26+0900\n"
+"Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
+"Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/skeletons/glr.c:895 data/skeletons/yacc.c:690
+msgid "syntax error: cannot back up"
+msgstr "構文エラー: バックアップすることができません"
+
+#: data/skeletons/glr.c:1810
+msgid "syntax is ambiguous"
+msgstr "構文が曖昧です"
+
+#: data/skeletons/glr.c:2222 data/skeletons/glr.c:2248
+#: data/skeletons/glr.c:2301 data/skeletons/glr.c:2541
+#: data/skeletons/lalr1.cc:1046 data/skeletons/lalr1.cc:1543
+#: data/skeletons/yacc.c:1364 data/skeletons/yacc.c:1899
+#: data/skeletons/yacc.c:1903
+msgid "syntax error"
+msgstr "構文エラー"
+
+#: data/skeletons/glr.c:2249 data/skeletons/lalr1.cc:1544
+#: data/skeletons/yacc.c:1365
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "構文エラー、予期しない %s です"
+
+#: data/skeletons/glr.c:2250 data/skeletons/lalr1.cc:1545
+#: data/skeletons/yacc.c:1366
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "構文エラー、予期しない %s です。予期されるのは %s です"
+
+#: data/skeletons/glr.c:2251 data/skeletons/lalr1.cc:1546
+#: data/skeletons/yacc.c:1367
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "構文エラー、予期しない %s です。予期されるのは %s または %s です"
+
+#: data/skeletons/glr.c:2252 data/skeletons/lalr1.cc:1547
+#: data/skeletons/yacc.c:1368
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "構文エラー、 予期しない %s です。予期されるのは %s、%s または %s です"
+
+#: data/skeletons/glr.c:2253 data/skeletons/lalr1.cc:1548
+#: data/skeletons/yacc.c:1369
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr ""
+"構文エラー、予期しない %s です。予期されるのは %s、%s、%s、または %s です。"
+
+#: data/skeletons/glr.c:2600 data/skeletons/yacc.c:1437
+#: data/skeletons/yacc.c:1439 data/skeletons/yacc.c:1642
+#: data/skeletons/yacc.c:2051
+msgid "memory exhausted"
+msgstr "メモリを使い果たしました"
